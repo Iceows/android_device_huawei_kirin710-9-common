@@ -1,0 +1,52 @@
+//
+// Copyright (C) 2024 The LineageOS Project
+//
+// SPDX-License-Identifier: Apache-2.0
+//
+
+prebuilt_etc {
+    name: "fstab.kirin710",
+    src: "etc/fstab.kirin710",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "fstab.modem",
+    src: "etc/fstab.modem",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.kirin710.rc",
+    src: "etc/init.kirin710.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.kirin710.usb.rc",
+    src: "etc/init.kirin710.usb.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.override.rc",
+    src: "etc/init.override.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "init.performance.rc",
+    src: "etc/init.performance.rc",
+    sub_dir: "init/hw",
+    vendor: true,
+}
+
+prebuilt_etc {
+    name: "ueventd.kirin710.rc",
+    filename: "ueventd.rc",
+    src: "etc/ueventd.kirin710.rc",
+    vendor: true,
+}
