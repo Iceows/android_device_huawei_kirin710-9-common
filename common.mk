@@ -17,6 +17,7 @@ $(call soong_config_set,huaweiAudioVars,emui_version,9)
 PRODUCT_PACKAGES += \
     android.hardware.audio@4.0-impl-hisi \
     android.hardware.audio.effect@4.0-impl \
+    android.hardware.soundtrigger@2.1-impl \
     android.hardware.audio.service \
     android.hardware.bluetooth.audio-impl \
 
@@ -42,6 +43,10 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml
+
+# Additional native libraries (empty)
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
 
 # Binder
 PRODUCT_PACKAGES += \
@@ -128,14 +133,21 @@ PRODUCT_PACKAGES += \
 # Fingerprint
 PRODUCT_PACKAGES += \
     vendor.huawei.hardware.biometrics.fingerprint@2.1.vendor
-
+    
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/keylayout/fingerprint.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/fingerprint.kl
 
-# Gatekeeper
+# Include current interfaces as framework jar, to be used by apps
 # PRODUCT_PACKAGES += \
-#     android.hardware.gatekeeper@1.0-service \
-#     android.hardware.gatekeeper@1.0-impl
+# 	vendor.huawei.hardware.biometrics.fingerprint-V2.1-java \
+# 	vendor.huawei.hardware.tp-V1.0-java
+
+# PRODUCT_COPY_FILES += \
+# 	device/huawei/kirin710/interfaces.xml:system/etc/permissions/interfaces.xml
+	
+# Gatekeeper HAL
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0-service.software
 
 # USB
 PRODUCT_PACKAGES += \
@@ -166,15 +178,13 @@ PRODUCT_PACKAGES += \
     libimonitor \
     libxcollie
 
-# Keymaster (software)
+# Keymaster (add vendor huawei .rc and -impl.so )
+# Don't rename -service.so the service name is stock in native_packages.xml
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0
-    libkeymaster3device
-
-#PRODUCT_PACKAGES += \
-#    libkeymaster3device.vendor \
-#    libkeystore-engine-wifi-hidl \
-#    libkeystore-wifi-hidl
+    android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-service \
+    libkeystore-engine-wifi-hidl \
+    libkeystore-wifi-hidl
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -183,6 +193,7 @@ PRODUCT_PACKAGES += \
 # Livedisplay
 PRODUCT_PACKAGES += \
     vendor.lineage.livedisplay@2.1-service.hisi
+
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -224,6 +235,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.camera.xml \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.gps.xml \
+    frameworks/native/data/etc/android.hardware.location.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.xml \
     frameworks/native/data/etc/android.hardware.nfc.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.ese.xml \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hce.xml \
     frameworks/native/data/etc/android.hardware.nfc.hcef.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hcef.xml \
@@ -246,6 +258,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version-1_0_3.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml \
+    frameworks/native/data/etc/android.hardware.faketouch.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.faketouch.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
 
 # Power
@@ -273,6 +286,7 @@ PRODUCT_PACKAGES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
+    debug-log-oss.rc \
     fstab.kirin710 \
     fstab.modem \
     init.kirin710.rc \

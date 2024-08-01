@@ -115,6 +115,9 @@ on init
 
     # TEE
     chmod 0400 /dev/hisi_teelog
+    mount ext4 /dev/block/bootdevice/by-name/secure_storage /sec_storage nosuid nodev noatime wait crypt discard,auto_da_alloc,mblk_io_submit,data=journal,context=u:object_r:teecd_data_file:s0
+    chown root root /sec_storage
+    chmod 600 /sec_storage
 
     # Audio
     chmod 0660 /dev/maxim_smartpa_dev
@@ -352,6 +355,7 @@ on boot
     # Oeminfo
     chmod 0666 /dev/socket/oeminfo_nvm
     chown system system /dev/socket/oeminfo_nvm
+    
 
     # Fingerprint
     mkdir /data/vendor/log/fingerprint
@@ -798,6 +802,9 @@ on boot
     chown system system /sys/class/fts/fts_i2c/iwrite_result
     chown system system /sys/class/fts/fts_i2c/iwr
     chown system system /sys/class/fts/fts_i2c/iwr_result
+    
+    # TouchScreen
+    # start aptouch
 
     # Modem
     chown radio radio /proc/modemstatus
@@ -950,6 +957,19 @@ on property:service.bootanim.exit=1
 
     write /proc/balong/stats/boot_time 1
 
+on property:odm.thp.service_enable=1
+    start aptouch
+
+on property:odm.thp.service_enable=0
+    stop aptouch
+
+
+#tp hostprocessing daemon
+service aptouch /system/vendor/bin/aptouch_daemon
+    user root
+    group root system shell wakelock
+    seclabel u:r:vendor_hisi_touchscreen:s0
+    
 service atcmdserver /vendor/bin/atcmdserver
     class main
     group root system nfc graphics audio camera

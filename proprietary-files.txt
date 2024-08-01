@@ -6,15 +6,16 @@
 -vendor/lib64/hw/audio.primary.hisi.so:vendor/lib64/hw/audio.primary.kirin710.so
 vendor/lib64/libasd.so
 vendor/lib64/libaudio_custom.so
+vendor/lib64/libaudio_custom_v2.so
+vendor/lib64/libaudio_utils.so
 vendor/lib64/libaudiodump.so
 vendor/lib64/libmax98925.so
-vendor/lib64/librttserver.so
 vendor/lib64/libsmartpakit.so
+
+# RTT
+vendor/lib64/librttserver.so
 vendor/lib64/vendor.huawei.hardware.rtt@1.0.so
 
-# Audio Configs
-vendor/etc/audio_effects.xml
-vendor/etc/audio_policy_configuration.xml
 
 # Audio Effects
 vendor/lib/soundfx/libhuaweiprocessing.so
@@ -37,31 +38,33 @@ vendor/lib/hwcam/hwcam.ddt.so
 vendor/lib/hwcam/hwcam.services.so
 vendor/lib/libFaceBeautyMeiwo.so
 vendor/lib/libcamerabuffer.so
-vendor/lib64/libdcamera_sr.so
 vendor/lib/libfacedetection.so
-vendor/lib64/libfcamera_visual_effect.so
 vendor/lib/libgpucommon_vendor_client.so
-vendor/lib64/libhdr.so
 vendor/lib/libimedia_filters.so
 vendor/lib/libispenhnc.so
 vendor/lib/libmediacomm@2.0-client.so
 vendor/lib/libmorpho_effect_library5.so
 vendor/lib/libmotiondetect.so
-vendor/lib64/libmrc_cg_ldc.so
-vendor/lib64/libmrc_cg_mfdenoise.so
-vendor/lib64/libmrc_cg_niceFood.so
-vendor/lib64/libmrc_cg_postprocess.so
-vendor/lib64/libmrc_cg_sz.so
+vendor/lib/libCLCropAndScale.so
 vendor/lib/libscenedetection.so
+vendor/lib/libhiai_client.so
+vendor/lib/libhiai_common.so
 vendor/lib/vendor.huawei.hardware.ai@1.0.so
+vendor/lib/vendor.huawei.hardware.ai@1.1.so
+vendor/lib/vendor.huawei.hardware.ai@1.2.so
 vendor/lib/vendor.huawei.hardware.biometrics.hwsecurefacerecognize@1.0.so
 vendor/lib/vendor.huawei.hardware.camera.camResource@1.0.so
 vendor/lib/vendor.huawei.hardware.camera.camResource@1.1.so
 vendor/lib/vendor.huawei.hardware.camera.camResource@1.2.so
 vendor/lib/vendor.huawei.hardware.camera.camResource@1.3.so
 vendor/lib/vendor.huawei.hardware.camera.camResource.orbService@1.0.so
+vendor/lib/vendor.huawei.hardware.camera.cfgsvr@1.0.so
+vendor/lib/vendor.huawei.hardware.camera.cfgsvr@1.1.so
 vendor/lib/vendor.huawei.hardware.camera.factory@1.0.so
 vendor/lib/vendor.huawei.hardware.graphics.gpucommon@1.0.so
+vendor/lib64/libdcamera_sr.so
+vendor/lib64/libfcamera_visual_effect.so
+vendor/lib64/libhdr.so
 vendor/lib64/hw/CameraFactoryService.so
 vendor/lib64/hw/hicam.hal.bz.so
 vendor/lib64/hw/hicam.hal.service.so
@@ -84,6 +87,18 @@ vendor/lib64/libdcamera_visual_effect.so
 vendor/lib64/libfacedetection.so
 vendor/lib64/libfcamera_visual_effect.so
 vendor/lib64/libgpucommon_vendor_client.so
+vendor/lib64/libhiai_client.so
+vendor/lib64/libhiai_common.so
+vendor/lib64/libhiai_cpu.so
+vendor/lib64/libhiai_hcs.so
+vendor/lib64/libhiai_hidl.so
+vendor/lib64/libhiai_server.so
+vendor/lib64/libmrc_cg_ldc.so
+vendor/lib64/libmrc_cg_mfdenoise.so
+vendor/lib64/libmrc_cg_niceFood.so
+vendor/lib64/libmrc_cg_postprocess.so
+vendor/lib64/libmrc_cg_sz.so
+vendor/lib64/libCLCropAndScale.so
 vendor/lib64/libhdr.so
 vendor/lib64/libimedia_filters.so
 vendor/lib64/libispenhnc.so
@@ -96,15 +111,27 @@ vendor/lib64/libmrc_cg_niceFood.so
 vendor/lib64/libmrc_cg_postprocess.so
 vendor/lib64/libmrc_cg_sz.so
 vendor/lib64/libscenedetection.so
+vendor/lib64/libfairlight.so
+vendor/lib64/libfairlight_ai.so
+vendor/lib64/libfairlight_ipu.so
+vendor/lib64/libdcamera_effect.so
+vendor/lib64/libcie.so
+
 vendor/lib64/vendor.huawei.hardware.ai@1.0.so
+vendor/lib64/vendor.huawei.hardware.ai@1.1.so
+vendor/lib64/vendor.huawei.hardware.ai@1.2.so
+vendor/lib64/vendor.huawei.hardware.ai@2.0.so
 vendor/lib64/vendor.huawei.hardware.biometrics.hwsecurefacerecognize@1.0.so
 vendor/lib64/vendor.huawei.hardware.camera.camResource@1.0.so
 vendor/lib64/vendor.huawei.hardware.camera.camResource@1.1.so
 vendor/lib64/vendor.huawei.hardware.camera.camResource@1.2.so
 vendor/lib64/vendor.huawei.hardware.camera.camResource@1.3.so
 vendor/lib64/vendor.huawei.hardware.camera.camResource.orbService@1.0.so
+vendor/lib64/vendor.huawei.hardware.camera.cfgsvr@1.0.so
+vendor/lib64/vendor.huawei.hardware.camera.cfgsvr@1.1.so
 vendor/lib64/vendor.huawei.hardware.camera.factory@1.0.so
 vendor/lib64/vendor.huawei.hardware.graphics.gpucommon@1.0.so
+
 
 # Camera Configs
 vendor/etc/camera/bshutter/default/algo.xml
@@ -179,6 +206,8 @@ vendor/lib64/libpf_oneimage_hisi.so
 vendor/lib64/libpf_rotate_hisi.so
 
 # Fingerprint
+system/usr/idc/fingerprint.idc
+system/usr/keylayout/fingerprint.kl
 vendor/bin/hw/vendor.huawei.hardware.biometrics.fingerprint@2.1-service
 vendor/etc/init/vendor.huawei.hardware.biometrics.fingerprint@2.1-service.rc
 vendor/lib/hw/fingerprint.kirin710.so
@@ -240,7 +269,7 @@ vendor/firmware/ram_reg_test_cfg
 vendor/firmware/wifi_cfg
 
 # GPS
-vendor/bin/hw/vendor.huawei.hardware.gnss@1.1-service
+vendor/bin/hw/vendor.huawei.hardware.gnss@1.2-service
 vendor/bin/hw/vendor.huawei.hardware.hisupl@1.0-service
 vendor/bin/gnss_control_hisi
 vendor/bin/gnss_engine_hisi
@@ -262,18 +291,19 @@ vendor/etc/gnss/rmd/f/a_1
 vendor/etc/gnss/rmd/c/aindex.bin
 vendor/etc/gnss/rmd/c/a_1
 vendor/etc/gnss/gnss_lss_thirdparty.conf
-vendor/etc/init/vendor.huawei.hardware.gnss@1.1-service.rc
+vendor/etc/init/vendor.huawei.hardware.gnss@1.2-service.rc
 vendor/etc/init/vendor.huawei.hardware.hisupl@1.0-service.rc
 vendor/etc/geoloc.conf
 vendor/lib/libgnss_lss_gw_thirdparty.so
 vendor/lib/vendor.huawei.hardware.gnss@1.0.so
 vendor/lib/vendor.huawei.hardware.gnss@1.1.so
+vendor/lib/vendor.huawei.hardware.gnss@1.2.so
 vendor/lib/vendor.huawei.hardware.hisupl@1.0.so
 vendor/lib64/hw/gps.hi1102.default.so
 vendor/lib64/hw/gps.hisi.default.so
 vendor/lib64/hw/hisupl.hi1102.default.so
 vendor/lib64/hw/hisupl.hi1102.default.so:vendor/lib64/hw/hisupl.hisi.default.so
-vendor/lib64/hw/vendor.huawei.hardware.gnss@1.1-impl.so
+vendor/lib64/hw/vendor.huawei.hardware.gnss@1.2-impl.so
 vendor/lib64/hw/vendor.huawei.hardware.hisupl@1.0-impl.so
 vendor/lib64/libgnss_common_hisi.so
 vendor/lib64/libgnss_lss_gw_thirdparty.so
@@ -283,7 +313,12 @@ vendor/lib64/libgnss_supl20common_hisi.so
 vendor/lib64/libgnss_supl20if_hisi.so
 vendor/lib64/vendor.huawei.hardware.gnss@1.0.so
 vendor/lib64/vendor.huawei.hardware.gnss@1.1.so
+vendor/lib64/vendor.huawei.hardware.gnss@1.2.so
 vendor/lib64/vendor.huawei.hardware.hisupl@1.0.so
+
+# Gatekeeper
+# vendor/lib/hw/gatekeeper.kirin710.so
+# vendor/lib64/hw/gatekeeper.kirin710.so
 
 # Graphics
 vendor/lib/egl/libGLES_mali.so
@@ -304,10 +339,10 @@ vendor/lib64/vendor.huawei.hardware.graphics.displayeffect@1.1.so
 vendor/lib64/vendor.huawei.hardware.graphics.displayeffect@1.2.so
 
 # Keystore
-#vendor/lib/hw/keystore.hirin710.so
-#vendor/lib/hw/android.hardware.keymaster@3.0-impl.so:vendor/lib/hw/android.hardware.keymaster@3.0-impl-hisi.so
-#vendor/lib64/hw/keystore.hirin710.so
-#vendor/lib64/hw/android.hardware.keymaster@3.0-impl.so:vendor/lib64/hw/android.hardware.keymaster@3.0-impl-hisi.so
+# vendor/lib/hw/keystore.kirin710.so
+# vendor/lib/hw/android.hardware.keymaster@3.0-impl.so:vendor/lib/hw/android.hardware.keymaster@3.0-impl-hisi.so
+# vendor/lib64/hw/keystore.kirin710.so
+# vendor/lib64/hw/android.hardware.keymaster@3.0-impl.so:vendor/lib64/hw/android.hardware.keymaster@3.0-impl-hisi.so
 
 # Mediacomm HAL (use by camera)
 vendor/bin/hw/vendor.huawei.hardware.graphics.mediacomm@2.0-service
@@ -315,9 +350,12 @@ vendor/etc/init/vendor.huawei.hardware.graphics.mediacomm@2.0-service.rc
 vendor/lib/hw/mediacomm.kirin710.so
 vendor/lib/hw/vendor.huawei.hardware.graphics.mediacomm@2.0-impl.so
 vendor/lib/vendor.huawei.hardware.graphics.mediacomm@2.0.so
+vendor/lib/vendor.huawei.hardware.graphics.mediacomm@2.1.so
 vendor/lib64/hw/mediacomm.kirin710.so
 vendor/lib64/hw/vendor.huawei.hardware.graphics.mediacomm@2.0-impl.so
 vendor/lib64/vendor.huawei.hardware.graphics.mediacomm@2.0.so
+vendor/lib64/vendor.huawei.hardware.graphics.mediacomm@2.1.so
+vendor/lib64/libc_sec.so
 
 # HWComposer - patched to nop some functions
 # (checkPartialUpdate, SetPartialUpdates, CalcLayerMaskRects, CalcComposeRect, CheckRotCapability) to fix HWC itself, random crashes, etc.
@@ -404,11 +442,8 @@ vendor/lib/ese_hw_hal.so
 vendor/lib64/ese_hw_hal.so
 
 # Sensors
-vendor/bin/hw/vendor.huawei.hardware.sensors@1.0-service
-vendor/etc/init/vendor.huawei.hardware.sensors@1.0-service.rc
 vendor/lib/hw/sensors.default.so:vendor/lib/hw/sensors.kirin710.so
 vendor/lib64/hw/sensors.default.so:vendor/lib64/hw/sensors.kirin710.so
-vendor/lib64/hw/vendor.huawei.hardware.sensors@1.0-impl.so
 
 # TEE (system)
 system/bin/tee_auth_daemon
@@ -426,6 +461,8 @@ system/lib64/libtuidaemon.so
 vendor/bin/32e6a847-ac89-4f81-8a13-f4ae50451d7f.sec
 vendor/bin/335129cd-41fa-4b53-9797-5ccb202a52d4.sec
 vendor/bin/4382f063-a6c3-485f-8786-e275512bd2ad.sec
+vendor/bin/4ae7ba51-2810-4cee-abbe-a42307b4ace3.sec
+vendor/bin/54ad737b-d84a-46bd-b993-1a90883f66f7.sec
 vendor/bin/6c8cf255-ca98-439e-a98e-ade64022ecb6.sec
 vendor/bin/859703f3-3cc5-4e88-b263-08f9ce82e3d0.sec
 vendor/bin/86310d18-5659-47c9-b212-841a3ca4f814.sec
@@ -438,45 +475,49 @@ vendor/bin/b4b71581-add2-e89f-d536-f35436dc7973.sec
 vendor/bin/c30917f8-d869-4379-8f46-4ac62be198dd.sec
 vendor/bin/d77c4d60-d279-4425-afa8-7f94559eae16.sec
 vendor/bin/e00d7df7-79e5-4507-9d8c-df03d5a7a8a5.sec
+# thp_teec_init sec file - see libthp.so
+vendor/bin/e2983b4f-1683-4445-9eec-1f7318757792.sec
 vendor/bin/e8014913-e501-4d44-a9d6-058ec3b93b90.sec
 vendor/bin/fd1bbfb2-9a62-4b27-8fdb-a503529076af.sec
 
 # TEE (fingerprint)
-vendor/bin/fpkit_fpc_1023_ta.sec
 vendor/bin/fpc_1075_ta.sec
 vendor/bin/fpc_1266Z120_ta.sec
+vendor/bin/fpkit_fpc_1023_ta.sec
 vendor/bin/fpkit_fpc_1266Z120_ta.sec
 vendor/bin/fpkit_fpc_1291_ta.sec
 vendor/bin/fpkit_fpc_1511_ta.sec
-vendor/bin/fpkit_goodix_3658_ta.sec
 vendor/bin/fpkit_goodix_3206_ta.sec
 vendor/bin/fpkit_goodix_3258_ta.sec
-vendor/bin/fpkit_goodix_5296_ta.sec
-vendor/bin/goodix_5296_ta.sec
-vendor/bin/goodix_3288_ta.sec
+vendor/bin/fpkit_goodix_3658_ta.sec
 vendor/bin/fpkit_goodix_5288_ta.sec
-vendor/bin/fpkit_silead_6165_ta.sec
-vendor/bin/silead_6275_ta.sec
+vendor/bin/fpkit_goodix_5296_ta.sec
+vendor/bin/fpkit_silead_6132_ta.sec
 vendor/bin/fpkit_silead_6152B_ta.sec
 vendor/bin/fpkit_silead_6152_ta.sec
-vendor/bin/silead_61856_ta.sec
+vendor/bin/fpkit_silead_6165_ta.sec
 vendor/bin/fpkit_silead_6275_ta.sec
-vendor/bin/fpkit_silead_6132_ta.sec
+vendor/bin/goodix_3288_ta.sec
+vendor/bin/goodix_5296_ta.sec
+vendor/bin/qfp_1500_ta.sec
+vendor/bin/silead_61856_ta.sec
+vendor/bin/silead_6275_ta.sec
 vendor/bin/syna_155A_ta.sec
 
 # TEE (vendor)
-vendor/bin/hw/vendor.huawei.hardware.libteec@2.0-service
 vendor/bin/teecd
 vendor/bin/tlogcat
+vendor/bin/hw/vendor.huawei.hardware.libteec@2.0-service
+vendor/etc/DroidSansFallbackTui.ttf
 vendor/etc/init/vendor.huawei.hardware.libteec@2.0-service.rc
 vendor/etc/native_packages.xml:vendor/etc/native_packages.bin
 vendor/lib/hw/vendor.huawei.hardware.libteec@2.0-impl.so
 vendor/lib/libc_secshared.so
-vendor/bin/hw/vendor.huawei.hardware.libteec@2.0-service
-vendor/bin/teecd
-vendor/bin/tlogcat
-vendor/etc/init/vendor.huawei.hardware.libteec@2.0-service.rc
-vendor/etc/native_packages.xml:vendor/etc/native_packages.bin
+vendor/lib/libteec.so
+vendor/lib/libteec_eid.so
+vendor/lib/libteec_vendor.so
+vendor/lib/libstorekeybox.so
+vendor/lib/libkeymaster3_attestation.so
 vendor/lib64/hw/vendor.huawei.hardware.libteec@2.0-impl.so
 vendor/lib64/libc_secshared.so
 vendor/lib64/libteec.so
@@ -485,7 +526,32 @@ vendor/lib64/libteec_vendor.so
 vendor/lib64/libstorekeybox.so
 vendor/lib64/libkeymaster3_attestation.so
 
+
 # Thermal
 vendor/lib/hw/thermal.kirin710.so
 vendor/lib64/hw/thermal.kirin710.so
+
+# Touch (THP)
+vendor/bin/aptouch_daemon
+vendor/bin/hw/vendor.huawei.hardware.tp@1.0-service
+vendor/etc/init/vendor.huawei.hardware.tp@1.0-service.rc
+vendor/lib/hw/hw_touch_pressure_cal.default.so
+vendor/lib/hw/hw_touchscreen.default.so
+vendor/lib/vendor.huawei.hardware.tp@1.0.so
+vendor/lib64/hw/vendor.huawei.hardware.tp@1.0-impl.so
+vendor/lib64/hw/hw_touchscreen.default.so
+vendor/lib64/hw/hw_touch_pressure_cal.default.so
+vendor/lib64/vendor.huawei.hardware.tp@1.0.so
+vendor/lib64/libafehalPOTR861300.so
+vendor/lib64/libafehalPOTR691100.so
+vendor/lib64/libafehalPOTR771100.so
+vendor/lib64/libaftouch.so
+vendor/lib64/libthp.so
+vendor/lib64/libthplog.so
+vendor/lib64/libthpinterface.so
+vendor/lib64/libtsa.so
+vendor/lib64/libmmpa.so
+
+
+
 

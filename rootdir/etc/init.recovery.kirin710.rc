@@ -1,3 +1,19 @@
 on init
     setprop sys.usb.configfs 1
     symlink /dev/block/platform/hi_mci.0 /dev/block/bootdevice
+    
+service aptouch /vendor/bin/aptouch_daemon
+    user root
+    group root system shell wakelock
+    disabled
+    seclabel u:r:vendor_hisi_touchscreen:s0
+
+on boot
+    restorecon /vendor/bin/aptouch_daemon
+    start aptouch
+
+on property:odm.thp.service_enable=1
+    start aptouch
+
+on property:odm.thp.service_enable=0
+    stop aptouch
