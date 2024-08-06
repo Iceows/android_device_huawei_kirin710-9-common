@@ -11,13 +11,7 @@ vendor/lib64/libaudio_utils.so
 vendor/lib64/libaudiodump.so
 vendor/lib64/libmax98925.so
 vendor/lib64/libsmartpakit.so
-vendor/lib64/libtas2560.so
 vendor/lib64/libtfa9872.so
-vendor/lib64/libhi6421_spk.so
-vendor/lib64/libbd_audio_vdev.so	
-vendor/lib64/libhivwqservice.so
-vendor/lib64/Flibaudio_utils.so
-vendor/lib64/libexpat.so
 
 # RTT
 vendor/lib64/librttserver.so
@@ -29,9 +23,11 @@ vendor/lib64/hw/sound_trigger.primary.default.so
 # Audio Effects
 vendor/lib/soundfx/libhuaweiprocessing.so
 vendor/lib/soundfx/liboffloadvisualizer.so
+vendor/lib/soundfx/libaudiopreprocessing.so
 vendor/lib/libhuaweiaudioeffectutil.so
 vendor/lib64/soundfx/libhuaweiprocessing.so
 vendor/lib64/soundfx/liboffloadvisualizer.so
+vendor/lib64/soundfx/libaudiopreprocessing.so
 vendor/lib64/libhuaweiaudioeffectutil.so
 
 # Bluetooth Config
@@ -384,6 +380,7 @@ vendor/lib/lib_factory_interface.so
 vendor/lib/lib_mmi_interface.so
 vendor/lib/libconn_factory_test.so
 vendor/lib/libfacsignedapi_share.so
+vendor/lib/libfaccommon_share.so
 vendor/lib/libhivwservice.so
 vendor/lib/libhuaweicust.so
 vendor/lib/libjtag_wdt_ctrl.so
@@ -394,6 +391,7 @@ vendor/lib64/lib_factory_interface.so
 vendor/lib64/lib_mmi_interface.so
 vendor/lib64/libconn_factory_test.so
 vendor/lib64/libfacsignedapi_share.so
+vendor/lib64/libfaccommon_share.so
 vendor/lib64/libhivwservice.so
 vendor/lib64/libhuaweicust.so
 vendor/lib64/libjtag_wdt_ctrl.so
