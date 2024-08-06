@@ -17,7 +17,6 @@ $(call soong_config_set,huaweiAudioVars,emui_version,9)
 PRODUCT_PACKAGES += \
     android.hardware.audio@4.0-impl-hisi \
     android.hardware.audio.effect@4.0-impl \
-    android.hardware.soundtrigger@2.1-impl \
     android.hardware.audio.service \
     android.hardware.bluetooth.audio-impl \
 
