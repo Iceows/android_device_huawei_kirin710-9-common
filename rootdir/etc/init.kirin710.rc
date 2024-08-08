@@ -804,7 +804,7 @@ on boot
     chown system system /sys/class/fts/fts_i2c/iwr_result
     
     # TouchScreen
-    # start aptouch
+    start aptouch
 
     # Modem
     chown radio radio /proc/modemstatus
