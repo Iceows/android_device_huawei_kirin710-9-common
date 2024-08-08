@@ -262,7 +262,7 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-service.huawei-libperfmgr
+     android.hardware.power-service.pixel-libperfmgr
 
 PRODUCT_PACKAGES += \
     vendor.huawei.hardware.perfgenius@2.0.vendor
