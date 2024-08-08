@@ -23,15 +23,15 @@ vendor/lib64/hw/sound_trigger.primary.default.so
 # Audio Effects
 vendor/lib/soundfx/libhuaweiprocessing.so
 vendor/lib/soundfx/liboffloadvisualizer.so
-vendor/lib/soundfx/libaudiopreprocessing.so
 vendor/lib/libhuaweiaudioeffectutil.so
 vendor/lib64/soundfx/libhuaweiprocessing.so
 vendor/lib64/soundfx/liboffloadvisualizer.so
-vendor/lib64/soundfx/libaudiopreprocessing.so
 vendor/lib64/libhuaweiaudioeffectutil.so
 
-# Bluetooth Config
+# Bluetooth
 vendor/etc/bluetooth/bt_vendor.conf
+vendor/lib64/libbt-vendor.so:vendor/lib64/libbt-vendor-bcm.so
+vendor/lib64/libbt-vendor-hisi.so
 
 # Camera
 vendor/bin/CameraDaemon
