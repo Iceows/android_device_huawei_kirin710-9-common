@@ -121,7 +121,8 @@ vendor/lib64/libfairlight_ai.so
 vendor/lib64/libfairlight_ipu.so
 vendor/lib64/libdcamera_effect.so
 vendor/lib64/libcie.so
-
+vendor/lib64/libHwDocDetection.so
+vendor/lib64/libhorizondetect.so
 vendor/lib64/vendor.huawei.hardware.ai@1.0.so
 vendor/lib64/vendor.huawei.hardware.ai@1.1.so
 vendor/lib64/vendor.huawei.hardware.ai@1.2.so
