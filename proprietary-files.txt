@@ -322,8 +322,8 @@ vendor/lib64/vendor.huawei.hardware.gnss@1.2.so
 vendor/lib64/vendor.huawei.hardware.hisupl@1.0.so
 
 # Gatekeeper
-# vendor/lib/hw/gatekeeper.kirin710.so
-# vendor/lib64/hw/gatekeeper.kirin710.so
+vendor/lib/hw/gatekeeper.kirin710.so
+vendor/lib64/hw/gatekeeper.kirin710.so
 
 # Graphics
 vendor/lib/egl/libGLES_mali.so
@@ -344,10 +344,10 @@ vendor/lib64/vendor.huawei.hardware.graphics.displayeffect@1.1.so
 vendor/lib64/vendor.huawei.hardware.graphics.displayeffect@1.2.so
 
 # Keystore
-# vendor/lib/hw/keystore.kirin710.so
-# vendor/lib/hw/android.hardware.keymaster@3.0-impl.so:vendor/lib/hw/android.hardware.keymaster@3.0-impl-hisi.so
-# vendor/lib64/hw/keystore.kirin710.so
-# vendor/lib64/hw/android.hardware.keymaster@3.0-impl.so:vendor/lib64/hw/android.hardware.keymaster@3.0-impl-hisi.so
+vendor/lib/hw/keystore.kirin710.so
+vendor/lib/hw/android.hardware.keymaster@3.0-impl.so:vendor/lib/hw/android.hardware.keymaster@3.0-impl-hisi.so
+vendor/lib64/hw/keystore.kirin710.so
+vendor/lib64/hw/android.hardware.keymaster@3.0-impl.so:vendor/lib64/hw/android.hardware.keymaster@3.0-impl-hisi.so
 
 # Mediacomm HAL (use by camera)
 vendor/bin/hw/vendor.huawei.hardware.graphics.mediacomm@2.0-service

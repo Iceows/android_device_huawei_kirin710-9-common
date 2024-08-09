@@ -132,21 +132,14 @@ PRODUCT_PACKAGES += \
 # Fingerprint
 PRODUCT_PACKAGES += \
     vendor.huawei.hardware.biometrics.fingerprint@2.1.vendor
-    
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/keylayout/fingerprint.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/fingerprint.kl
 
-# Include current interfaces as framework jar, to be used by apps
-# PRODUCT_PACKAGES += \
-# 	vendor.huawei.hardware.biometrics.fingerprint-V2.1-java \
-# 	vendor.huawei.hardware.tp-V1.0-java
-
-# PRODUCT_COPY_FILES += \
-# 	device/huawei/kirin710/interfaces.xml:system/etc/permissions/interfaces.xml
-	
 # Gatekeeper HAL
 PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0-service.software
+    android.hardware.gatekeeper@1.0-impl \
+    android.hardware.gatekeeper@1.0-service
 
 # USB
 PRODUCT_PACKAGES += \
@@ -177,11 +170,17 @@ PRODUCT_PACKAGES += \
     libimonitor \
     libxcollie
 
+# ConfigStore (only service)
+PRODUCT_PACKAGES += \
+    android.hardware.configstore@1.1-service
+
 # Keymaster (add vendor huawei .rc and -impl.so )
 # Don't rename -service.so the service name is stock in native_packages.xml
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0-impl \
-    android.hardware.keymaster@3.0-service \
+    android.hardware.keymaster@3.0-service
+
+PRODUCT_PACKAGES += \
+    libkeymaster3device.vendor \
     libkeystore-engine-wifi-hidl \
     libkeystore-wifi-hidl
 

@@ -230,28 +230,6 @@ on post-fs-data
     mkdir /data/share 0770 media_rw media_rw
     chown media_rw media_rw /data/share
 
-    # Connectivity
-    mkdir /data/vendor/wifi 0771 wifi wifi
-    mkdir /data/vendor/wifi/wpa 0770 wifi wifi
-    mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
-    mkdir /data/vendor/log/wifi 0770 wifi system
-    mkdir /data/vendor/bluedroid 0771 bluetooth bluetooth
-
-    # TEE
-    mkdir /data/vendor/log/sec_storage_data 0775 system system
-    mkdir /data/vendor/log/sec_storage_data/log 0755 system system
-
-    mkdir /data/vendor/sec_storage_data 0700 system system
-    restorecon /data/vendor/sec_storage_data
-
-    mkdir /data/vendor/sec_storage_data_users 0700 system system
-    restorecon /data/vendor/sec_storage_data_users
-
-    # set sec_storage_data can be access by teecd
-    mkdir /data/sec_storage_data 0700 system system encryption=None
-    restorecon /data/sec_storage_data
-    mkdir /data/sec_storage_data_users 0700 system system encryption=None
-    restorecon /data/sec_storage_data_users
     
     # OMA
     mkdir /data/vendor/misc/oma
@@ -350,6 +328,30 @@ on post-fs-data
     chmod 0775 /data/vendor/log/audio_logs/audio_hook
     chown audioserver system /data/vendor/log/audio_logs/audio_hook
     restorecon_recursive /data/vendor/log/audio_logs/audio_hook
+
+    # Connectivity
+    mkdir /data/vendor/wifi 0771 wifi wifi
+    mkdir /data/vendor/wifi/wpa 0770 wifi wifi
+    mkdir /data/vendor/wifi/wpa/sockets 0770 wifi wifi
+    mkdir /data/vendor/log/wifi 0770 wifi system
+    mkdir /data/vendor/bluedroid 0771 bluetooth bluetooth
+
+    # TEE
+    mkdir /data/vendor/log/sec_storage_data 0775 system system
+    mkdir /data/vendor/log/sec_storage_data/log 0755 system system
+
+    mkdir /data/vendor/sec_storage_data 0700 system system
+    restorecon_recursive /data/vendor/sec_storage_data
+
+    mkdir /data/vendor/sec_storage_data_users 0700 system system
+    restorecon_recursive /data/vendor/sec_storage_data_users
+
+    # set sec_storage_data can be access by teecd
+    mkdir /data/sec_storage_data 0700 system system encryption=None
+    restorecon_recursive /data/sec_storage_data
+    mkdir /data/sec_storage_data_users 0700 system system encryption=None
+    restorecon_recursive /data/sec_storage_data_users
+
 
 on boot
     # Oeminfo
