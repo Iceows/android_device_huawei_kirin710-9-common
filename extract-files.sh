@@ -60,10 +60,15 @@ fi
 
 function blob_fixup() {
     case "${1}" in
-        vendor/etc/camera/*|odm/etc/camera/*)
-            sed -i 's/gb2312/iso-8859-1/g' "${2}"
-            sed -i 's/GB2312/iso-8859-1/g' "${2}"
+        vendor/etc/camera/*)
+            sed -i 's/gb2312/UTF-8/g' "${2}"
+            sed -i 's/GB2312/UTF-8/g' "${2}"
             sed -i 's/xmlversion/xml version/g' "${2}"
+            sed -i 's/\"SkinWhiten/\" SkinWhiten/g' "${2}"
+            echo ${2}
+            iconv -f GB2312 -t UTF-8 -c -o ${2}.utf8 ${2}
+            mv ${2}.utf8 ${2}
+            tidy -quiet -m -asxml -xml -indent -wrap 0 --hide-comments 1 ${2}
             ;;
         vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc)
             sed -i 's/preavs/vendor/g' "${2}"
