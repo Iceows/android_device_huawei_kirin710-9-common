@@ -149,6 +149,7 @@ on init
     chmod 0660 /dev/smartpakit
     chown media media /dev/smartpakit
 
+
     # Hungtask
     write /proc/sys/kernel/hung_task_panic 1
     write /proc/sys/kernel/hung_task_timeout_secs 90
@@ -746,7 +747,7 @@ on boot
     chown system system /sys/kernel/rcc/stat
 
     write /sys/kernel/rcc/event PASSIVE_MODE
-    write /sys/kernel/rcc/max_anon_clean_size 448M
+    write /sys/kernel/rcc/max_anon_clean_size 512M
     write /sys/kernel/rcc/enable 1
 
     # Touchscreen
@@ -964,9 +965,21 @@ on property:odm.thp.service_enable=1
 
 on property:odm.thp.service_enable=0
     stop aptouch
+    
+on property:sys.boot_completed=1
+    write /sys/kernel/rcc/event BOOT_COMPLETE
 
 
-#tp hostprocessing daemon
+# Camera Daemon
+service CameraDaemon /vendor/bin/CameraDaemon kirin710 ${ro.vendor.camera.platform_name}
+    class main
+    user media
+    group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc mediadrm system
+    ioprio rt 4
+    capabilities SYS_NICE
+    writepid /dev/cpuset/top-app/tasks /dev/stune/top-app/tasks
+
+# TP hostprocessing Daemon
 service aptouch /system/vendor/bin/aptouch_daemon
     user root
     group root system shell wakelock
