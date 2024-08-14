@@ -5,7 +5,8 @@
 /dev/block/by-name/splash2   /splash2   ext4     rw,nosuid,nodev,noatime,data=ordered,context=u:object_r:splashtwo_file:s0 wait,check,nofail
 /dev/block/by-name/userdata  /data      f2fs     rw,nosuid,nodev,noatime,discard,inline_data,inline_xattr wait,check
 /dev/block/by-name/cache     /cache     ext4     rw,nosuid,nodev,noatime,data=ordered wait,check
-/dev/block/by-name/version   /metadata  ext4     rw,noatime,nosuid,nodev wait,check,formattable,first_stage_mount
+/dev/block/by-name/version   /metadata  ext4     rw,nosuid,nodev,noatime wait,check,formattable,first_stage_mount
+/dev/block/by-name/product   /product   ext4     rw,nosuid,nodev,noatime wait,check,first_stage_mount
 /dev/block/by-name/misc      /misc      emmc     defaults     defaults
 /dev/block/by-name/oeminfo   /oeminfo   emmc     defaults     first_stage_mount
 
