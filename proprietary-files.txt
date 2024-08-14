@@ -198,6 +198,38 @@ vendor/etc/camera/watermark/dm.argb
 vendor/etc/camera/watermark/dm.png
 vendor/etc/camera/watermark/param.xml
 
+# Perfgenius HAL (use by camera)
+vendor/bin/hw/vendor.huawei.hardware.perfgenius@2.0-service
+vendor/etc/init/vendor.huawei.hardware.perfgenius@2.0-service.rc
+vendor/etc/perfgenius_config.xml
+vendor/etc/perfgenius_event_policy.xml
+vendor/etc/perfgenius_scenario_policy.xml
+vendor/lib/hw/vendor.huawei.hardware.perfgenius@2.0-impl.so
+vendor/lib/libperfhub.so
+vendor/lib/libperfhub_service.so
+vendor/lib/libperfgenius_vendor_client.so
+vendor/lib64/hw/vendor.huawei.hardware.perfgenius@2.0-impl.so
+vendor/lib64/libperfhub.so
+vendor/lib64/libperfhub_service.so
+vendor/lib64/libperfgenius_vendor_client.so
+vendor/lib64/vendor.huawei.hardware.perfgenius@2.0.so
+
+# IA Ware (use by camera)
+vendor/bin/hw/vendor.huawei.hardware.iawareperf@1.0-service
+vendor/etc/init/vendor.huawei.hardware.iawareperf@1.0-service.rc
+vendor/lib/libiawareperf_server.so
+vendor/lib/libiawareperf_client.so
+vendor/lib/vendor.huawei.hardware.iawareperf@1.0.so
+vendor/lib/libiawareperfpolicy_server.so
+vendor/lib/vendor.huawei.hardware.iawareperfpolicy@1.0.so
+vendor/lib64/libiawareperf_server.so
+vendor/lib64/libiawareperf_client.so
+vendor/lib64/vendor.huawei.hardware.iawareperf@1.0.so
+vendor/lib64/hw/vendor.huawei.hardware.iawareperf@1.0-impl.so
+vendor/lib64/libiawareperfpolicy_server.so
+vendor/lib64/vendor.huawei.hardware.iawareperfpolicy@1.0.so
+vendor/lib64/hw/vendor.huawei.hardware.iawareperfpolicy@1.0-impl.so
+
 # Connectivity
 vendor/bin/oam_hisi
 vendor/bin/octty
@@ -450,8 +482,14 @@ vendor/lib/ese_hw_hal.so
 vendor/lib64/ese_hw_hal.so
 
 # Sensors
+vendor/bin/hw/vendor.huawei.hardware.sensors@1.0-service
+vendor/etc/init/vendor.huawei.hardware.sensors@1.0-service.rc
 vendor/lib/hw/sensors.default.so:vendor/lib/hw/sensors.kirin710.so
+vendor/lib/vendor.huawei.hardware.sensors@1.0.so
 vendor/lib64/hw/sensors.default.so:vendor/lib64/hw/sensors.kirin710.so
+vendor/lib64/hw/vendor.huawei.hardware.sensors@1.0-impl.so
+vendor/lib64/vendor.huawei.hardware.sensors@1.0.so
+
 
 # TEE (system)
 system/bin/tee_auth_daemon
