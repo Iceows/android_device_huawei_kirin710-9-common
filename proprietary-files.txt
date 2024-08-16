@@ -221,12 +221,14 @@ vendor/lib/libiawareperf_server.so
 vendor/lib/libiawareperf_client.so
 vendor/lib/vendor.huawei.hardware.iawareperf@1.0.so
 vendor/lib/libiawareperfpolicy_server.so
+vendor/lib/libhisi_wrapper.so
 vendor/lib/vendor.huawei.hardware.iawareperfpolicy@1.0.so
 vendor/lib64/libiawareperf_server.so
 vendor/lib64/libiawareperf_client.so
 vendor/lib64/vendor.huawei.hardware.iawareperf@1.0.so
 vendor/lib64/hw/vendor.huawei.hardware.iawareperf@1.0-impl.so
 vendor/lib64/libiawareperfpolicy_server.so
+vendor/lib64/libhisi_wrapper.so
 vendor/lib64/vendor.huawei.hardware.iawareperfpolicy@1.0.so
 vendor/lib64/hw/vendor.huawei.hardware.iawareperfpolicy@1.0-impl.so
 
