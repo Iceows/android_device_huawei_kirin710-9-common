@@ -1,26 +1,22 @@
 
-on early-init
-    # wifi
-    # setprop wifi.interface wlan0
-
 on boot
-    # for bluetooth mac
+    # Bluetooth mac
     mkdir /data/vendor/bluedroid 02770 bluetooth bluetooth
-    #bluetooth
+    # Bluetooth
    chown bluetooth bluetooth /dev/hwbt
    
-# optimize selinux strategy for OTA
+
 on post-fs-data
-   #wifi
+    # Wifi
     setprop wifi.interface wlan0
     setprop wifi.direct.interface p2p0
     chmod 0660 /data/vendor/wifi/wpa/wpa_supplicant.conf
 
-    #platform
+    # Platform
     chmod 660 /dev/ttyAMA4
     chown system system /dev/ttyAMA4
     
-    #vendor dir
+    # Vendor dir
     mkdir /data/vendor/gnss 0770 system system
     mkdir /data/vendor/cust_conn 0770 system system
 
