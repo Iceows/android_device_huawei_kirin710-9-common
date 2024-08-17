@@ -7,6 +7,7 @@ on boot
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
     chmod 0774 /sys/class/rfkill/rfkill0/state
 
+
     chown bluetooth bluetooth /proc/bluetooth/sleep/proto
     chmod 664 /proc/bluetooth/sleep/proto
     chown bluetooth bluetooth /proc/bluetooth/sleep/btwrite
@@ -14,17 +15,34 @@ on boot
     chown bluetooth bluetooth /proc/bluetooth/sleep/btwake
     chmod 664 /proc/bluetooth/sleep/btwake
 
-    mkdir /data/vendor/bluedroid 02770 bluetooth bluetooth
+     # for bluetooth mac
+     mkdir /data/vendor/bluedroid 02770 bluetooth bluetooth
 
-    # Wi-Fi
+    # Wifi
     setprop wifi.interface wlan0
     setprop wifi.direct.interface p2p-dev-wlan0
 
+    # enable apk to control the fwlog output
     chown system system /sys/module/bcmdhd/parameters/dhd_console_ms
     chown system system /sys/devices/platform/bcmdhd_wlan.1/wifi_arp_timeout
-
+    chown system system /sys/kernel/debug/bcmdhd/debug_sdio_quality
+    chown system system /sys/kernel/debug/bcmdhd/debug_wl_counters
+    chmod 0440 /sys/kernel/debug/bcmdhd/debug_sdio_quality
+    chmod 0440 /sys/kernel/debug/bcmdhd/debug_wl_counters
+    # control vio from framework
+    chown system system /dev/vio
+    # control wlanfty_status from framework
+    chown system system /dev/wlanfty_status
+    chmod 400 /dev/wlanfty_status
+    # control wlanfty_ver from framework
+    chown system system /dev/wlanfty_ver
+    chmod 400 /dev/wlanfty_ver
+    # control wifi firmware path
     chown wifi wifi /sys/module/bcmdhd/parameters/firmware_path
     chown wifi wifi /sys/module/bcmdhd/parameters/nvram_path
+    # write Region
+    chown system system /sys/module/bcmdhd/parameters/region
+    write /sys/module/bcmdhd/parameters/region ${ro.product.locale.region}
 
     # VIO
     chown system system /dev/vio

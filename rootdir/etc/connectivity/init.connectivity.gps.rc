@@ -1,39 +1,76 @@
+
 on post-fs-data
-    # GPS
-    mkdir /data/gps
-    mkdir /data/gps/log
-    chown root system /data/gps
-    chmod 775 /data/gps
-    chmod 770 /data/gps/log
+
+    mkdir /data/vendor/gps
+    mkdir /data/vendor/log/gps_log
+    chmod 775 /data/vendor/log/gps_log
+    chown gps system /data/vendor/log/gps_log
+
+    mkdir /data/vendor/log/gps_log/.tmp
+    chmod 775 /data/vendor/log/gps_log/.tmp
+    chown gps system /data/vendor/log/gps_log/.tmp
+
+    mkdir /data/vendor/log/gps_log/gps
+    mkdir /data/vendor/log/gps_log/lhd
+    chmod 775 /data/vendor/log/gps_log/gps
+    chmod 775 /data/vendor/log/gps_log/lhd
+    chown gps system /data/vendor/log/gps_log/gps
+    chown gps system /data/vendor/log/gps_log/lhd
+
+    mkdir /data/vendor/log/gps_log/gps/.tmp
+    mkdir /data/vendor/log/gps_log/lhd/.tmp
+    chmod 775 /data/vendor/log/gps_log/gps/.tmp
+    chmod 775 /data/vendor/log/gps_log/lhd/.tmp
+    chown gps system /data/vendor/log/gps_log/gps/.tmp
+    chown gps system /data/vendor/log/gps_log/lhd/.tmp
+
+    mkdir /data/vendor/log/gps_log/log
+    chmod 775 /data/vendor/log/gps_log/log
+    chown root system /data/vendor/log/gps_log/log
+
+    chown gps system /data/vendor/gps
+    chmod 775 /data/vendor/gps
+    chmod 660 /data/vendor/gps/.flp.interface.pipe.to_gpsd
+    chmod 660 /data/vendor/gps/.flp.interface.pipe.to_jni
+    chmod 660 /data/vendor/gps/.gps.interface.pipe.to_gpsd
+    chmod 660 /data/vendor/gps/.gps.interface.pipe.to_jni
+    chmod 660 /data/vendor/gps/.pipe.gpsd_to_lhd.to_client
+    chmod 660 /data/vendor/gps/.pipe.gpsd_to_lhd.to_server
+    chmod 660 /data/vendor/gps/.pipe.lppe.to_fd
+    chmod 660 /data/vendor/gps/.pipe.lppe.to_gpsd
+
+on early-boot
 
 on boot
-    # UART
-    chmod 660 /dev/ttyAMA3
+    # For serial port.
+    chown root system /dev/ttyAMA2
+    chmod 0664 /dev/ttyAMA2
+    chown root system /dev/gpstty
+    chmod 0664 /dev/gpstty
+    chown gps system /dev/appvcom9
+    chmod 0660 /dev/appvcom9
+    # For GPIOs for REG_PU and nReset
+    chown root system /proc/gps/nstandby
+    chmod 0664 /proc/gps/nstandby
+
 
 service gpsdaemon /vendor/bin/gpsdaemon
-    class main
-    user root
-    group root system
-    oneshot
+  class late_start
+  user root
+  group root system
+  oneshot
 
-service gpsd_47531 /vendor/bin/glgps47531 -c /data/gps/gpsconfig.xml
-    socket gps seqpacket 660 root root
-    class main
-    user root
-    group system
-    oneshot
-    disabled
+service ipld /product/bin/inv_ipld  /data/vendor/gps/inv_ipld.prop
+  class late_start
+  user system
+  group system sdcard_rw
+  disabled
 
-service gpsdcl_47531 /vendor/bin/glgps47531cl -c /data/gps/gpsconfig.xml
-    socket gps seqpacket 660 root root
-    class main
-    user root
-    group system
-    disabled
+service fusd /vendor/bin/fusion_daemon
+  class late_start
+  user system
+  group system root wakelock
 
-service gpsd_4752 /vendor/bin/glgps4752 -c /data/gps/gpsconfig.xml
-    socket gps seqpacket 660 root root
-    class main
-    user root
-    group system
-    disabled
+
+
+

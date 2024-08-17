@@ -8,6 +8,15 @@ on early-boot
     # Adjust parameters for dm-verity device
     write /sys/block/dm-0/queue/read_ahead_kb 2048
 
+    # Support legacy paths
+    symlink /sdcard /mnt/sdcard
+    symlink /sdcard /storage/sdcard0
+
+    # create Ext SDcard mountpoint
+    mkdir /mnt/media_rw 0750 media_rw media_rw
+    mkdir /mnt/hisee_fs 0760 root system    
+    
+
     # Graphics
     chown media media /sys/class/graphics/fb0/effect_ce
 
@@ -150,6 +159,17 @@ on init
     chown media media /dev/smartpakit
 
 
+     
+    # HISEE
+    chown nfc system /sys/devices/platform/0.hisee/hisee_power
+    chmod 0660 /sys/devices/platform/0.hisee/hisee_power
+    chown nfc nfc /sys/devices/platform/0.hisee/hisee_apdu
+    chmod 0660 /sys/devices/platform/0.hisee/hisee_apdu
+    chown nfc system /sys/devices/platform/0.hisee/hisee_check_ready
+    chmod 0440 /sys/devices/platform/0.hisee/hisee_check_ready
+    chown nfc nfc /sys/devices/platform/0.hisee/hisee_has_new_cos
+    chmod 0440 /sys/devices/platform/0.hisee/hisee_has_new_cos
+
     # Hungtask
     write /proc/sys/kernel/hung_task_panic 1
     write /proc/sys/kernel/hung_task_timeout_secs 90
@@ -273,6 +293,9 @@ on post-fs-data
     mkdir /data/vendor/camera/img
     chown media camera /data/vendor/camera/img
     chmod 770 /data/vendor/camera/img
+    setprop vendor.camera.dis.flag 2
+    setprop vendor.camera.tnr.flag 1
+    
 
     # Vold
     setprop vold.post_fs_data_done 1
@@ -608,15 +631,20 @@ on boot
     chown system system /sys/class/sensors/airpress_sensor/set_calidata
     chown system system /sys/class/sensors/cap_prox_sensor/calibrate
     chown system system /sys/class/sensors/cap_prox_sensor/calibrate_timeout
-    chown system system sys/class/sensors/cap_prox_sensor/cap_prox_calibrate_type
-    chown system system sys/class/sensors/cap_prox_sensor/cap_prox_calibrate_order
-
+    chown system system /sys/class/sensors/cap_prox_sensor/cap_prox_calibrate_type
+    chown system system /sys/class/sensors/cap_prox_sensor/cap_prox_calibrate_order
+    chown system system /sys/class/sensors/ois_sensor/ois_ctrl
+    chown media system  /sys/class/sensors/rpc_sensor/rpc_motion_req
+    chown system system /sys/class/sensors/rpc_sensor/rpc_sar_service_req
+    
     chown system system /sys/devices/platform/huawei_sensorhub_logbuff/logbuff_config
     chmod 660 /sys/devices/platform/huawei_sensorhub_logbuff/logbuff_config
     chown system system /sys/devices/platform/huawei_sensorhub_logbuff/logbuff_flush
     chmod 444 /sys/devices/platform/huawei_sensorhub_logbuff/logbuff_flush
     chown system system /sys/class/sensors/libsensor_ver
+    chown root system /proc/sensorhub_logbuff
 
+    # File permissions for Fingersense
     chown system system /sys/devices/platform/huawei_sensor/set_fingersense_enable
     chmod 0660 /sys/devices/platform/huawei_sensor/set_fingersense_enable
     chown system system /sys/devices/platform/huawei_sensor/fingersense_req_data
@@ -625,7 +653,7 @@ on boot
     chmod 0440 /sys/devices/platform/huawei_sensor/fingersense_data_ready
     chown system system /sys/devices/platform/huawei_sensor/fingersense_latch_data
     chmod 0440 /sys/devices/platform/huawei_sensor/fingersense_latch_data
-    chown root system /proc/sensorhub_logbuff
+
 
     # NFC
     chown nfc nfc /sys/nfc/nfc_wired_ese_type
@@ -636,6 +664,12 @@ on boot
     chmod 0664 /sys/nfc/nfc_hal_dmd
     chown nfc nfc /sys/nfc/nfc_calibration
     chmod 0444 /sys/nfc/nfc_calibration
+    chown nfc nfc /sys/nfc/nfc_clk_src
+    chmod 0444 /sys/nfc/nfc_clk_src
+    chown nfc nfc /sys/nfc/nfc_switch_state
+    chmod 0664 /sys/nfc/nfc_switch_state
+    chown nfc nfc /sys/nfc/nfc_at_result
+    chmod 0664 /sys/nfc/nfc_at_result
     chown nfc nfc /sys/nfc/nfc_get_rssi
     chmod 0664 /sys/nfc/nfc_get_rssi
     chown nfc nfc /sys/nfc/nfc_recovery_close_nfc
@@ -671,15 +705,32 @@ on boot
     chmod 0444 /sys/nfc/nfc_single_channel
     chown system nfc /sys/nfc/nfc_age_test_flag_state
     chmod 0640 /sys/nfc/nfc_age_test_flag_state
-    chown nfc nfc /sys/nfc/nfc_wired_ese_type
-    chmod 0444 /sys/nfc/nfc_wired_ese_type
-    chown nfc nfc /sys/nfc/nfc_activated_se_info
-    chmod 0664 /sys/nfc/nfc_activated_se_info
     chown nfc nfc /sys/nfc/nfc_switch_state
     chmod 0664 /sys/nfc/nfc_switch_state
-    chown nfc nfc /sys/nfc/nfc_at_result
-    chmod 0664 /sys/nfc/nfc_at_result
 
+    # Hall
+    chown system system /sys/class/hall/hall/state
+    chown system system /sys/class/hall/hall/report
+    chown system system /sys/class/hall/hall/info
+    chown system system /sys/class/hall/hall/count
+    chown system system /sys/class/hall/hall/enable
+    chown system system /sys/class/hall/hall/flag
+    chown system system /sys/class/hall/hall/period
+    chown system system /sys/class/hall/hall/report_count
+    chown system system /sys/class/hall/hall/value
+        
+    # Step motor
+    chown system system /sys/devices/platform/step_motor/param
+    chown system system /sys/devices/platform/step_motor/emergency
+        
+    # Step motor hall
+    chown system system /sys/class/stepmotor_hall/ak09970_dev/ak09970_enable
+    chown system system /sys/class/stepmotor_hall/ak09970_dev/ak09970_odr
+    chown system system /sys/class/stepmotor_hall/ak09970_dev/ak09970_mag_data
+    chown system system /sys/class/stepmotor_hall/ak09970_dev/ak09970_self_test
+    chown system system /sys/class/stepmotor_hall/ak09970_dev/ak09970_nv_data
+    chown system system /sys/class/stepmotor_hall/ak09970_dev/ak09970_calibration
+        
     # Audio
     chmod 660 /proc/hifidsp/hifi
     chown root audio /proc/hifidsp/hifi
@@ -697,7 +748,7 @@ on boot
     chown root system /proc/hi64xxdbg/hi64xxdebug
     chown root system /sys/kernel/debug/hicodec/rr
     chown root system /sys/kernel/debug/hicodec/rh
-
+    
     chown system system  /sys/class/dp/source/source_mode
     chmod 0660 /sys/class/dp/source/source_mode
     chown system system  /sys/class/dp/resolution/source_resolution

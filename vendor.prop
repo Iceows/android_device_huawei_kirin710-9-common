@@ -18,7 +18,7 @@ bluetooth.profile.asha.central.enabled?=true
 bluetooth.profile.a2dp.source.enabled?=true
 bluetooth.profile.avrcp.target.enabled?=true
 bluetooth.profile.bas.client.enabled?=true
-bluetooth.profile.gatt.enabled?=true
+bluetooth.profile.gatt.enabled=false
 bluetooth.profile.hfp.ag.enabled?=true
 bluetooth.profile.hid.device.enabled?=true
 bluetooth.profile.hid.host.enabled?=true
@@ -57,7 +57,7 @@ media.stagefright.thumbnail.prefer_hw_codecs=true
 ro.opengles.version=196610
 
 # Perfgenius
-ro.kirin.config.hw_perfgenius=false
+ro.kirin.config.hw_perfgenius=true
 
 # RIL
 bastet.service.enable=true
@@ -96,3 +96,16 @@ ro.vendor.tui.service=true
 
 # Zygote
 zygote.critical_window.minute=10
+
+
+# Config - huawei specific
+ro.config.certbyid=7745:ce;7778:ce;7420:ce;7421:ce;7422:ce;7423:ce
+ro.config.cpu_info_display=Hisilicon Kirin 710
+ro.config.hw_camera_nfc_switch=true
+ro.config.hw_nfc_on=true
+ro.config.hw_sim2airplane=true
+ro.config.hw_srlte=true
+ro.config.safety_certification=CE,FCC
+ro.config.support_ca=true
+
+

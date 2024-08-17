@@ -1,22 +1,28 @@
-on boot
-    # Bluetooth
-    mkdir /data/vendor/bluedroid 02770 bluetooth bluetooth
 
+on early-init
+    # wifi
+    # setprop wifi.interface wlan0
+
+on boot
+    # for bluetooth mac
+    mkdir /data/vendor/bluedroid 02770 bluetooth bluetooth
+    #bluetooth
+   chown bluetooth bluetooth /dev/hwbt
+   
+# optimize selinux strategy for OTA
 on post-fs-data
-    # Wi-Fi
+   #wifi
     setprop wifi.interface wlan0
     setprop wifi.direct.interface p2p0
     chmod 0660 /data/vendor/wifi/wpa/wpa_supplicant.conf
 
-    chmod 660 /dev/ttyAMA3
-    chown system system /dev/ttyAMA3
-
-    # GPS
+    #platform
+    chmod 660 /dev/ttyAMA4
+    chown system system /dev/ttyAMA4
+    
+    #vendor dir
     mkdir /data/vendor/gnss 0770 system system
     mkdir /data/vendor/cust_conn 0770 system system
-    
-    # A-GPS (SUPL20 apk)
-    setprop is_hisi_connectivity_chip 1
 
 service octty /vendor/bin/octty
     class core
@@ -39,11 +45,17 @@ service hisi_bfg /vendor/bin/start_connectivity_hisi dir_p_mode
 
 on property:vendor.setup_hi110x_modules=success
     start octty
+    write /dev/kmsg "octty has started    "
     start oam_hisi
+    write /dev/kmsg "oam_hisi has started    "
     start hsgnss
+    write /dev/kmsg "hsgnss has started"
     start agnsscontrol
+    write /dev/kmsg "agnsscontrol has started"
     start supl20clientd
+    write /dev/kmsg "sup120clientd has started"
     start watchlssd
+    write /dev/kmsg "watchlssd has started"
 
 service hsgnss /vendor/bin/gnss_engine_hisi -normal
     class main
@@ -68,3 +80,10 @@ service watchlssd /vendor/bin/gnss_watchlssd_thirdparty
     user gps
     group system inet net_raw wakelock
     disabled
+
+service fusd /vendor/bin/fusion_daemon
+    class late_start
+    user system
+    group system root wakelock
+
+
