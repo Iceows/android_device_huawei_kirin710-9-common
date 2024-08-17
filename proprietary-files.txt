@@ -397,6 +397,9 @@ vendor/lib64/vendor.huawei.hardware.graphics.mediacomm@2.0.so
 vendor/lib64/vendor.huawei.hardware.graphics.mediacomm@2.1.so
 vendor/lib64/libc_sec.so
 
+# Dolby Audio
+vendor/etc/init/vendor.huawei.hardware.dolby.dms@1.0-service.rc
+
 # HWComposer - patched to nop some functions
 # (checkPartialUpdate, SetPartialUpdates, CalcLayerMaskRects, CalcComposeRect, CheckRotCapability) to fix HWC itself, random crashes, etc.
 vendor/lib64/hw/hwcomposer.kirin710.so|708a59318b0d4b2267dddfef87d26cfa0af888eb
