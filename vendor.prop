@@ -98,6 +98,11 @@ ro.vendor.tui.service=true
 zygote.critical_window.minute=10
 
 
+# Wi-Fi
+wifi.direct.interface=p2p0
+wifi.interface=wlan0
+
+
 # Config - huawei specific
 ro.config.certbyid=7745:ce;7778:ce;7420:ce;7421:ce;7422:ce;7423:ce
 ro.config.cpu_info_display=Hisilicon Kirin 710
