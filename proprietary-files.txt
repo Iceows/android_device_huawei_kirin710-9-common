@@ -231,6 +231,7 @@ vendor/lib64/libiawareperfpolicy_server.so
 vendor/lib64/libhisi_wrapper.so
 vendor/lib64/vendor.huawei.hardware.iawareperfpolicy@1.0.so
 vendor/lib64/hw/vendor.huawei.hardware.iawareperfpolicy@1.0-impl.so
+vendor/etc/xml/iaware_config_cust.xml
 
 # Connectivity
 vendor/bin/oam_hisi
