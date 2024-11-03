@@ -25,7 +25,7 @@
     <bool translatable="false" name="config_wifiSaeUpgradeEnabled">false</bool>
     
     <!-- Always assume 5GHz support -->
-    <bool translatable="false" name="config_wifi5ghzSupport">false</bool>
+    <bool translatable="false" name="config_wifi5ghzSupport">true</bool>
     
     <!-- Boolean indicating whether the wifi chipset supports background scanning mechanism.
          This mechanism allows the host to remain in suspend state and the dongle to actively
@@ -34,7 +34,7 @@
     <bool name="config_wifi_background_scan_support">false</bool>
     
     <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
-    <bool translatable="false" name="config_wifi_dual_band_support">false</bool>
+    <bool translatable="false" name="config_wifi_dual_band_support">true</bool>
 
     <bool name="config_wifiDisplaySupportsProtectedBuffers">false</bool>
     <bool name="config_wifi_batched_scan_supported">false</bool>

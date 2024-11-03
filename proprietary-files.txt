@@ -58,6 +58,8 @@ vendor/lib/vendor.huawei.hardware.ai@1.0.so
 vendor/lib/vendor.huawei.hardware.ai@1.1.so
 vendor/lib/vendor.huawei.hardware.ai@1.2.so
 vendor/lib/vendor.huawei.hardware.biometrics.hwsecurefacerecognize@1.0.so
+vendor/lib/vendor.huawei.hardware.biometrics.hwfacerecognize@1.0.so
+vendor/lib/vendor.huawei.hardware.biometrics.hwfacerecognize@1.1.so
 vendor/lib/vendor.huawei.hardware.camera.camResource@1.0.so
 vendor/lib/vendor.huawei.hardware.camera.camResource@1.1.so
 vendor/lib/vendor.huawei.hardware.camera.camResource@1.2.so
@@ -67,6 +69,8 @@ vendor/lib/vendor.huawei.hardware.camera.cfgsvr@1.0.so
 vendor/lib/vendor.huawei.hardware.camera.cfgsvr@1.1.so
 vendor/lib/vendor.huawei.hardware.camera.factory@1.0.so
 vendor/lib/vendor.huawei.hardware.graphics.gpucommon@1.0.so
+vendor/lib/vendor.huawei.hardware.hwfactoryinterface@1.0.so
+vendor/lib/vendor.huawei.hardware.hwfactoryinterface@1.1.so
 vendor/lib64/libdcamera_sr.so
 vendor/lib64/libfcamera_visual_effect.so
 vendor/lib64/libhdr.so
@@ -128,6 +132,8 @@ vendor/lib64/vendor.huawei.hardware.ai@1.1.so
 vendor/lib64/vendor.huawei.hardware.ai@1.2.so
 vendor/lib64/vendor.huawei.hardware.ai@2.0.so
 vendor/lib64/vendor.huawei.hardware.biometrics.hwsecurefacerecognize@1.0.so
+vendor/lib64/vendor.huawei.hardware.biometrics.hwfacerecognize@1.0.so
+vendor/lib64/vendor.huawei.hardware.biometrics.hwfacerecognize@1.1.so
 vendor/lib64/vendor.huawei.hardware.camera.camResource@1.0.so
 vendor/lib64/vendor.huawei.hardware.camera.camResource@1.1.so
 vendor/lib64/vendor.huawei.hardware.camera.camResource@1.2.so
@@ -137,7 +143,8 @@ vendor/lib64/vendor.huawei.hardware.camera.cfgsvr@1.0.so
 vendor/lib64/vendor.huawei.hardware.camera.cfgsvr@1.1.so
 vendor/lib64/vendor.huawei.hardware.camera.factory@1.0.so
 vendor/lib64/vendor.huawei.hardware.graphics.gpucommon@1.0.so
-
+vendor/lib64/vendor.huawei.hardware.hwfactoryinterface@1.0.so
+vendor/lib64/vendor.huawei.hardware.hwfactoryinterface@1.1.so
 
 # Camera Configs
 vendor/etc/camera/bshutter/default/algo.xml
@@ -231,7 +238,7 @@ vendor/lib64/libiawareperfpolicy_server.so
 vendor/lib64/libhisi_wrapper.so
 vendor/lib64/vendor.huawei.hardware.iawareperfpolicy@1.0.so
 vendor/lib64/hw/vendor.huawei.hardware.iawareperfpolicy@1.0-impl.so
-vendor/etc/xml/iaware_config_cust.xml
+product/etc/xml/iaware_config_cust.xml:vendor/etc/xml/iaware_config_cust.bin
 
 # Connectivity
 vendor/bin/oam_hisi
@@ -401,6 +408,12 @@ vendor/lib64/libc_sec.so
 # Dolby Audio
 vendor/etc/init/vendor.huawei.hardware.dolby.dms@1.0-service.rc
 
+# DRM (L1 et L3)
+preavs/bin/hw/android.hardware.drm@1.1-service.widevine:vendor/bin/hw/android.hardware.drm@1.1-service.widevine
+vendor/etc/init/android.hardware.drm@1.1-service.widevine.rc
+preavs/oemcrypto/liboemcrypto.so:vendor/lib/liboemcrypto.so
+preavs/lib/libwvhidl.so:vendor/lib/libwvhidl.so
+
 # HWComposer - patched to nop some functions
 # (checkPartialUpdate, SetPartialUpdates, CalcLayerMaskRects, CalcComposeRect, CheckRotCapability) to fix HWC itself, random crashes, etc.
 vendor/lib64/hw/hwcomposer.kirin710.so|708a59318b0d4b2267dddfef87d26cfa0af888eb
@@ -437,6 +450,9 @@ vendor/lib64/libjtag_wdt_ctrl.so
 vendor/lib64/libnvme.so
 vendor/lib64/liboeminfo.so
 
+# HW vibrator
+vendor/lib/vendor.huawei.hardware.hwvibrator@1.0.so
+vendor/lib64/vendor.huawei.hardware.hwvibrator@1.0.so
 
 # Modem
 vendor/etc/modemConfig/balong/basic_name
@@ -462,9 +478,10 @@ vendor/bin/hw/rild
 vendor/lib/libbalong-ril.so
 vendor/lib/libbalong-ril-1.so
 vendor/lib/libcommril.so
--vendor/lib/libril.so:vendor/lib/libril-hisi.so
+-vendor/lib/libril.so
 vendor/lib/lib_wifi_sar.so
 vendor/lib/vendor.huawei.hardware.hisiradio@1.0.so
+vendor/lib/vendor.huawei.hardware.hisiradio@1.1.so
 vendor/lib/vendor.huawei.hardware.radio@2.0.so
 vendor/lib/vendor.huawei.hardware.radio.chr@1.0.so
 vendor/lib/vendor.huawei.hardware.radio.deprecated@1.0.so
@@ -472,9 +489,10 @@ vendor/lib/vendor.huawei.hardware.radio.ims@1.0.so
 vendor/lib64/libbalong-ril.so
 vendor/lib64/libbalong-ril-1.so
 vendor/lib64/libcommril.so
--vendor/lib64/libril.so:vendor/lib64/libril-hisi.so
+-vendor/lib64/libril.so
 vendor/lib64/lib_wifi_sar.so
 vendor/lib64/vendor.huawei.hardware.hisiradio@1.0.so
+vendor/lib64/vendor.huawei.hardware.hisiradio@1.1.so
 vendor/lib64/vendor.huawei.hardware.radio@2.0.so
 vendor/lib64/vendor.huawei.hardware.radio.chr@1.0.so
 vendor/lib64/vendor.huawei.hardware.radio.deprecated@1.0.so
@@ -500,14 +518,18 @@ vendor/lib64/vendor.huawei.hardware.sensors@1.0.so
 # TEE (system)
 system/bin/tee_auth_daemon
 system/etc/native_packages.xml:system/etc/native_packages.bin
-system/lib/libc_secshared.so
+system/lib/libc_secshared.so;MODULE=libc_secshared_system
 system/lib/libteec_client.so
 system/lib/libteeclientjni.so
 system/lib/libtuidaemon.so
-system/lib64/libc_secshared.so
+system/lib/vendor.huawei.hardware.libteec@1.0.so
+system/lib/vendor.huawei.hardware.libteec@2.0.so;MODULE=vendor.huawei.hardware.libteec@2.0.so_system
+system/lib64/libc_secshared.so;MODULE=libc_secshared_system
 system/lib64/libteec_client.so
 system/lib64/libteeclientjni.so
 system/lib64/libtuidaemon.so
+system/lib64/vendor.huawei.hardware.libteec@1.0.so
+system/lib64/vendor.huawei.hardware.libteec@2.0.so;MODULE=vendor.huawei.hardware.libteec@2.0.so_system
 
 # TEE Configs
 vendor/bin/32e6a847-ac89-4f81-8a13-f4ae50451d7f.sec
@@ -570,6 +592,7 @@ vendor/lib/libteec_eid.so
 vendor/lib/libteec_vendor.so
 vendor/lib/libstorekeybox.so
 vendor/lib/libkeymaster3_attestation.so
+vendor/lib/vendor.huawei.hardware.libteec@2.0.so
 vendor/lib64/hw/vendor.huawei.hardware.libteec@2.0-impl.so
 vendor/lib64/libc_secshared.so
 vendor/lib64/libteec.so
@@ -577,6 +600,7 @@ vendor/lib64/libteec_eid.so
 vendor/lib64/libteec_vendor.so
 vendor/lib64/libstorekeybox.so
 vendor/lib64/libkeymaster3_attestation.so
+vendor/lib64/vendor.huawei.hardware.libteec@2.0.so
 
 
 # Thermal

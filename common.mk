@@ -4,21 +4,20 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+## Common Path
+COMMON_PATH := device/huawei/kirin710-9-common
+
+# Inherit the proprietary files
+$(call inherit-product, vendor/huawei/kirin710-9-common/kirin710-9-common-vendor.mk)
+
 # Setup dalvik vm configs
 $(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
-
-## Project ID Quota
-$(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
-
-# Audio
-$(call soong_config_set,android_hardware_audio,run_64bit,true)
-$(call soong_config_set,huaweiAudioVars,emui_version,9)
 
 PRODUCT_PACKAGES += \
     android.hardware.audio@4.0-impl-hisi \
     android.hardware.audio.effect@4.0-impl \
-    android.hardware.audio.service \
-    android.hardware.bluetooth.audio-impl \
+    android.hardware.audio.service.hisi \
+    android.hardware.bluetooth.audio@2.1-impl
 
 PRODUCT_PACKAGES += \
     audio.bluetooth.default \
@@ -45,7 +44,7 @@ PRODUCT_COPY_FILES += \
 
 # Additional native libraries (empty)
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
+    $(LOCAL_PATH)/configs/linker/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
 
 # Binder
 PRODUCT_PACKAGES += \
@@ -70,11 +69,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl
 
-PRODUCT_PACKAGES += \
-    vendor.huawei.hardware.biometrics.hwfacerecognize@1.1.vendor \
-    vendor.huawei.hardware.hwfactoryinterface@1.0.vendor \
-    vendor.huawei.hardware.hwfactoryinterface@1.1.vendor \
-    vendor.huawei.hardware.sensors@1.0.vendor
 
 PRODUCT_PACKAGES += \
     libstdc++.vendor \
@@ -90,7 +84,7 @@ PRODUCT_COPY_FILES += \
 
 # ConfigStore
 PRODUCT_PACKAGES += \
-    disable_configstore
+    android.hardware.configstore@1.1-service
 
 # Display
 PRODUCT_PACKAGES += \
@@ -104,22 +98,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     libui-v28
-
-# DRM
-PRODUCT_PACKAGES += \
-    android.hardware.drm-service.clearkey \
-    android.hardware.drm@1.2.vendor
-
-PRODUCT_PACKAGES += \
-    libmockdrmcryptoplugin
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/vendor/etc/init/android.hardware.drm@1.2-service.widevine.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/android.hardware.drm@1.2-service.widevine.rc
-
-PRODUCT_PACKAGES += \
-    android.hardware.drm@1.2-service.widevine \
-    libwvhidl \
-    liboemcrypto
 
 PRODUCT_PACKAGES += \
     libprotobuf-cpp-full-v29 \
@@ -156,8 +134,9 @@ PRODUCT_COPY_FILES += \
 
 # Health
 PRODUCT_PACKAGES += \
-    android.hardware.health-service.hisi \
-    android.hardware.health-service.hisi-recovery
+    android.hardware.health@2.1-impl \
+    android.hardware.health@2.1-impl.recovery \
+    android.hardware.health@2.1-service
 
 # Hisi
 PRODUCT_PACKAGES += \
@@ -173,6 +152,16 @@ PRODUCT_PACKAGES += \
 # ConfigStore (only service)
 PRODUCT_PACKAGES += \
     android.hardware.configstore@1.1-service
+
+# DRM
+PRODUCT_PACKAGES += \
+    android.hardware.drm-service.clearkey
+
+PRODUCT_PACKAGES += \
+    libmockdrmcryptoplugin
+
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.1.vendor
 
 # Keymaster (add vendor huawei .rc and -impl.so )
 # Don't rename -service.so the service name is stock in native_packages.xml
@@ -264,12 +253,17 @@ PRODUCT_PACKAGES += \
      android.hardware.power-service.pixel-libperfmgr
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
+    $(LOCAL_PATH)/configs/powerhint/powerhint.json:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.json
 
 # Radio
 PRODUCT_PACKAGES += \
+    android.hardware.radio@1.0.vendor \
+    android.hardware.radio@1.1.vendor \
     android.hardware.radio@1.2.vendor \
-    android.hardware.radio.deprecated@1.0.vendor
+    android.hardware.radio.config@1.3.vendor \
+    android.hardware.radio.deprecated@1.0.vendor \
+    libril \
+    librilutils
 
 PRODUCT_PACKAGES += \
     libril \
@@ -285,7 +279,7 @@ PRODUCT_PACKAGES += \
     init.override.rc \
     init.performance.rc \
     ueventd.kirin710.rc
-
+    
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(LOCAL_PATH)/rootdir/etc/connectivity/,$(TARGET_COPY_OUT_VENDOR)/etc/init/connectivity)
 
@@ -321,11 +315,6 @@ PRODUCT_COPY_FILES += \
     system/core/libprocessgroup/profiles/cgroups_28.json:$(TARGET_COPY_OUT_VENDOR)/etc/cgroups.json \
     system/core/libprocessgroup/profiles/task_profiles_28.json:$(TARGET_COPY_OUT_VENDOR)/etc/task_profiles.json
 
-# TEE
-PRODUCT_PACKAGES += \
-    vendor.huawei.hardware.libteec@2.0 \
-    vendor.huawei.hardware.libteec@2.0.vendor
-
 # Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-impl \
@@ -339,9 +328,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
     android.hardware.vibrator@1.0-service
-
-PRODUCT_PACKAGES += \
-    vendor.huawei.hardware.hwvibrator@1.0.vendor
     
 # IME Input
 PRODUCT_PACKAGES += \
@@ -359,14 +345,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
     hostapd \
-    wpa_supplicant.conf \
-    wpa_supplicant
+    wpa_supplicant \
+    wpa_supplicant.conf
 
-# WiFi et P2P configs
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/wifi/,$(TARGET_COPY_OUT_VENDOR)/etc/wifi)
 
--include hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk
 
-# Inherit the proprietary files
-$(call inherit-product, vendor/huawei/kirin710-9-common/kirin710-9-common-vendor.mk)

@@ -141,7 +141,7 @@ include device/hisi/sepolicy/SEPolicy.mk
 VENDOR_SECURITY_PATCH := 2019-05-05 # ANE-LGRP2-OVS 9.1.0.401
 
 # Vintf
-DEVICE_MANIFEST_FILE := $(COMMON_PATH)/manifest.xml
+DEVICE_MANIFEST_FILE := $(COMMON_PATH)/hidl/manifest.xml
 
 # VNDK
 PRODUCT_USE_VNDK_OVERRIDE := true
