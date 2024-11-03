@@ -8,59 +8,92 @@
 /dev/memory_latency     0660    system  system
 /dev/imgsysbrg_vdec0    0660    system  camera
 
+/dev/hi_vdec					0660  system 	camera
+/dev/hi_venc					0660  system 	camera
+
+
+/dev/ttySPI0 		0660 	root radio
+/dev/ttySPI1 		0660 	root system
+/dev/ttySPI2 		0660 	root radio
+/dev/ttySPI3 		0660 	root system
+/dev/ttySPI4 		0440 	root root
+/dev/ttySPI5 		0660 	root system
+/dev/ttySPI6 		0660 	root system
+/dev/ttySPI7 		0660 	root radio
+/dev/ttySPI8 		0440 	root root
+/dev/ttySPI9 		0660 	root radio
+/dev/ttySPI10 	        0660 	root radio
+/dev/ttySPI11 	0660 	root system
+/dev/ttySPI12 	0440 	root root
+/dev/ttySPI13 	0440 	root root
+/dev/ttySPI14 	0440 	root root
+
+
 # Video
-/dev/video0                                     0660 system camera
-/dev/video1                                     0660 system camera
-/dev/video2                                     0660 system camera
-/dev/video3                                     0660 system camera
-/dev/video4                                     0660 system camera
-/dev/video5                                     0660 system camera
-/dev/video6                                     0660 system camera
-/dev/video7                                     0660 system camera
-/dev/video8                                     0660 system camera
-/dev/video9                                     0660 system camera
-/dev/video10                                    0660 system camera
-/dev/video11                                    0660 system camera
-/dev/video12                                    0660 system camera
-/dev/video13                                    0660 system camera
-/dev/video14                                    0660 system camera
+/dev/video0					0660  system 	camera
+/dev/video1					0660  system 	camera
+/dev/video2					0660  system 	camera
+/dev/video3					0660  system 	camera
+/dev/video4					0660  system 	camera
+/dev/video5					0660  system 	camera
+/dev/video6					0660  system 	camera
+/dev/video7					0660  system 	camera
+/dev/video8					0660  system 	camera
+/dev/video9					0660  system 	camera
+/dev/video10					0660  system 	camera
+/dev/video11					0660  system 	camera
+/dev/video12					0660  system 	camera
+/dev/video13					0660  system 	camera
+/dev/video14					0660  system 	camera
+/dev/video15					0660  system 	camera
+/dev/video16					0660  system 	camera
+/dev/video17					0660  system 	camera
+/dev/video18					0660  system 	camera
 
 # Media
-/dev/media0                                     0660 system camera
-/dev/media1                                     0660 system camera
-/dev/media2                                     0660 system camera
-/dev/media3                                     0660 system camera
-/dev/media4                                     0660 system camera
-/dev/media5                                     0660 system camera
-/dev/media6                                     0660 system camera
-/dev/media7                                     0660 system camera
-/dev/media8                                     0660 system camera
-/dev/media9                                     0660 system camera
-/dev/media10                                    0660 system camera
-/dev/media11                                    0660 system camera
-/dev/media12                                    0660 system camera
-/dev/media13                                    0660 system camera
-/dev/media14                                    0660 system camera
+/dev/media0					0660  system 	camera
+/dev/media1					0660  system 	camera
+/dev/media2					0660  system 	camera
+/dev/media3					0660  system 	camera
+/dev/media4					0660  system 	camera
+/dev/media5					0660  system 	camera
+/dev/media6					0660  system 	camera
+/dev/media7					0660  system 	camera
+/dev/media8					0660  system 	camera
+/dev/media9					0660  system 	camera
+/dev/media10					0660  system 	camera
+/dev/media11					0660  system 	camera
+/dev/media12					0660  system 	camera
+/dev/media13					0660  system 	camera
+/dev/media14					0660  system 	camera
+/dev/media15					0660  system 	camera
+/dev/media16					0660  system 	camera
+/dev/media17					0660  system 	camera
+/dev/media18					0660  system 	camera
 
 # Camera
-/dev/v4l-subdev0                                0660 system camera
-/dev/v4l-subdev1                                0660 system camera
-/dev/v4l-subdev2                                0660 system camera
-/dev/v4l-subdev3                                0660 system camera
-/dev/v4l-subdev4                                0660 system camera
-/dev/v4l-subdev5                                0660 system camera
-/dev/v4l-subdev6                                0660 system camera
-/dev/v4l-subdev7                                0660 system camera
-/dev/v4l-subdev8                                0660 system camera
-/dev/v4l-subdev9                                0660 system camera
-/dev/v4l-subdev10                               0660 system camera
-/dev/v4l-subdev11                               0660 system camera
-/dev/v4l-subdev12                               0660 system camera
-/dev/v4l-subdev13                               0660 system camera
-/dev/v4l-subdev14                               0660 system camera
-/dev/v4l-subdev15                               0660 system camera
-/dev/v4l-subdev16                               0660 system camera
-/dev/hicam_buf                                  0660 system camera
+/dev/v4l-subdev0					0660  system 	camera
+/dev/v4l-subdev1					0660  system 	camera
+/dev/v4l-subdev2					0660  system 	camera
+/dev/v4l-subdev3					0660  system 	camera
+/dev/v4l-subdev4					0660  system 	camera
+/dev/v4l-subdev5					0660  system 	camera
+/dev/v4l-subdev6					0660  system 	camera
+/dev/v4l-subdev7					0660  system 	camera
+/dev/v4l-subdev8					0660  system 	camera
+/dev/v4l-subdev9					0660  system 	camera
+/dev/v4l-subdev10					0660  system 	camera
+/dev/v4l-subdev11					0660  system 	camera
+/dev/v4l-subdev12					0660  system 	camera
+/dev/v4l-subdev13					0660  system 	camera
+/dev/v4l-subdev14					0660  system 	camera
+/dev/v4l-subdev15					0660  system 	camera
+/dev/v4l-subdev16					0660  system 	camera
+/dev/v4l-subdev17					0660  system 	camera
+/dev/v4l-subdev18					0660  system 	camera
+/dev/v4l-subdev19					0660  system 	camera
+/dev/v4l-subdev20					0660  system 	camera
+/dev/hicam_buf					        0660  system    camera
 
 # LEDs
 /sys/class/leds/torch/brightness                0664 system system
@@ -70,6 +103,7 @@
 /dev/hifi_misc                                  0770 root   audio
 /dev/voice_proxy_vowifi                         0660 root   audio
 /dev/dsm                                        0660 system system
+/dev/hi6xxx_fpga_misc                           0660 root   audio
 
 # NFC
 /dev/pn544                                      0660 nfc nfc
@@ -77,6 +111,14 @@
 
 # FRP
 /dev/block/mmcblk0p4                            0660 system system
+/dev/dsm                                        0660 system dsm
+
+# Card
+/dev/block/mmcblk0				  0660 system system
+/dev/block/mmcblk0p1                            0600 system system
+/dev/block/sdc1                                 0660 system system
 
 # TEE
 /dev/tc_ns_client                               0664 system system
+
+

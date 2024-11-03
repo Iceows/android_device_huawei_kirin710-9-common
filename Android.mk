@@ -48,4 +48,11 @@ $(SYSTEM_NATIVE_PACKAGES_FIXUP): $(PRODUCT_OUT)/system/etc/native_packages.bin
 
 ALL_DEFAULT_INSTALLED_MODULES += $(NATIVE_PACKAGES_FIXUP) $(SYSTEM_NATIVE_PACKAGES_FIXUP)
 
+IAWARE_PACKAGES_FIXUP := $(TARGET_OUT_VENDOR)/etc/xml/iaware_config_cust.xml
+$(IAWARE_PACKAGES_FIXUP): $(TARGET_OUT_VENDOR)/etc/xml/iaware_config_cust.bin
+	@echo "Move vendor iaware_config_cust.bin to iaware_config_cust.xml"
+	$(hide) mv $(TARGET_OUT_VENDOR)/etc/xml/iaware_config_cust.bin $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(IAWARE_PACKAGES_FIXUP)
+
 endif
