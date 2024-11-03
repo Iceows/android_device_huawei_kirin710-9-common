@@ -109,7 +109,7 @@ TARGET_BOARD_PLATFORM := kirin710
 
 
 # Properties
-TARGET_VENDOR_PROP += $(COMMON_PATH)/vendor.prop
+TARGET_VENDOR_PROP += $(COMMON_PATH)/properties/vendor.prop
 
 # Recovery
 BOARD_USES_FULL_RECOVERY_IMAGE := true

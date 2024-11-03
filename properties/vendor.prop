@@ -90,18 +90,15 @@ ro.surface_flinger.present_time_offset_from_vsync_ns=0
 ro.surface_flinger.force_hwc_copy_for_virtual_displays=0
 ro.surface_flinger.max_virtual_display_dimension=0
 
-
 # TEE
 ro.vendor.tui.service=true
 
 # Zygote
 zygote.critical_window.minute=10
 
-
 # Wi-Fi
 wifi.direct.interface=p2p0
 wifi.interface=wlan0
-
 
 # Config - huawei specific
 ro.config.certbyid=7745:ce;7778:ce;7420:ce;7421:ce;7422:ce;7423:ce
@@ -112,5 +109,8 @@ ro.config.hw_sim2airplane=true
 ro.config.hw_srlte=true
 ro.config.safety_certification=CE,FCC
 ro.config.support_ca=true
+
+# Netflix
+ro.netflix.bsp_rev=KIRIN710-15488-1
 
 

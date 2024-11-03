@@ -278,6 +278,7 @@ PRODUCT_PACKAGES += \
     init.kirin710.usb.rc \
     init.override.rc \
     init.performance.rc \
+    rild.rc \
     ueventd.kirin710.rc
     
 PRODUCT_COPY_FILES += \
