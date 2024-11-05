@@ -225,6 +225,31 @@
         <fqname>@2.1::IBluetoothAudioProvidersFactory/default</fqname>
     </hal>
     <hal format="hidl">
+        <name>vendor.huawei.hardware.ai</name>
+        <transport>hwbinder</transport>
+        <version>1.2</version>
+        <interface>
+            <name>IAiEngineService</name>
+            <instance>hiaiserver</instance>
+        </interface>
+        <fqname>@1.2::IAiEngineService/hiaiserver</fqname>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.huawei.hardware.ai</name>
+        <transport>hwbinder</transport>
+        <version>2.0</version>
+        <interface>
+            <name>IAIService_hidl</name>
+            <instance>hiaiserver_v2</instance>
+        </interface>
+        <interface>
+            <name>IModelManagerService_hidl</name>
+            <instance>hiaiserver_modelmanager</instance>
+        </interface>
+        <fqname>@2.0::IAIService_hidl/hiaiserver_v2</fqname>
+        <fqname>@2.0::IModelManagerService_hidl/hiaiserver_modelmanager</fqname>
+    </hal>    
+    <hal format="hidl">
         <name>vendor.huawei.hardware.biometrics.fingerprint</name>
         <transport>hwbinder</transport>
         <version>2.1</version>

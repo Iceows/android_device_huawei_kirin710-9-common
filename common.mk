@@ -197,6 +197,23 @@ PRODUCT_PACKAGES += \
     com.android.nfc_extras \
     NfcNci \
     Tag
+    
+# NFC
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hce.xml \
+    frameworks/native/data/etc/android.hardware.nfc.hcef.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hcef.xml \
+    frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.xml \
+    frameworks/native/data/etc/com.android.nfc_extras.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.android.nfc_extras.xml \
+    frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.nxp.mifare.xml
+    
+# Secure Element
+PRODUCT_PACKAGES += \
+    android.hardware.nfc@1.2.vendor \
+    android.hardware.secure_element@1.0.vendor
+    
+# NFC SecureElement (Hisi version)
+PRODUCT_COPY_FILES += \
+     frameworks/native/data/etc/android.hardware.nfc.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.ese.xml
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
@@ -223,10 +240,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.location.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.location.xml \
-    frameworks/native/data/etc/android.hardware.nfc.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.ese.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hce.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hce.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hcef.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.hcef.xml \
-    frameworks/native/data/etc/android.hardware.nfc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.xml \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.opengles.aep.xml \
     frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/native/data/etc/android.hardware.sensor.barometer.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.sensor.barometer.xml \
@@ -265,36 +278,33 @@ PRODUCT_PACKAGES += \
     libril \
     librilutils
 
-PRODUCT_PACKAGES += \
-    libril \
-    librilutils
-
-# Ramdisk
-PRODUCT_PACKAGES += \
-    debug-log-oss.rc \
-    fstab.kirin710 \
-    fstab.modem \
-    init.kirin710.rc \
-    init.kirin710.usb.rc \
-    init.override.rc \
-    init.performance.rc \
-    rild.rc \
-    ueventd.kirin710.rc
-    
+# Fstab
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/rootdir/etc/connectivity/,$(TARGET_COPY_OUT_VENDOR)/etc/init/connectivity)
-
+    $(LOCAL_PATH)/configs/fstab/fstab.kirin710:$(TARGET_COPY_OUT_RAMDISK)/fstab.kirin710 \
+    $(LOCAL_PATH)/configs/fstab/fstab.kirin710:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.kirin710 \
+    $(LOCAL_PATH)/configs/fstab/fstab.modem:$(TARGET_COPY_OUT_VENDOR)/etc/fstab.modem
+ 
+# Init
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/rootdir/etc/charger/,$(TARGET_COPY_OUT_VENDOR)/etc/init/charger)
+    $(LOCAL_PATH)/configs/init/init.kirin710.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.kirin710.rc \
+    $(LOCAL_PATH)/configs/init/init.kirin710.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.kirin710.usb.rc \
+    $(LOCAL_PATH)/configs/init/init.performance.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.performance.rc \
+    $(LOCAL_PATH)/configs/init/init.override.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.override.rc \
+    $(LOCAL_PATH)/configs/init/debug-log-oss.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/debug-log-oss.rc \
+    $(LOCAL_PATH)/configs/init/rild.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/rild.rc \
+    $(LOCAL_PATH)/configs/init/ueventd.kirin710.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.rc
+
+# Init connectivity
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/init/connectivity/,$(TARGET_COPY_OUT_VENDOR)/etc/init/connectivity)
+
+# Init charger
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/configs/init/charger/,$(TARGET_COPY_OUT_VENDOR)/etc/init/charger)
 
 # Recovery
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/init.recovery.kirin710.rc:$(TARGET_RECOVERY_OUT)/root/init.recovery.kirin710.rc
-
-# Secure Element
-PRODUCT_PACKAGES += \
-    android.hardware.nfc@1.2.vendor \
-    android.hardware.secure_element@1.0.vendor
+    $(LOCAL_PATH)/configs/init/init.recovery.kirin710.rc:$(TARGET_RECOVERY_OUT)/root/init.recovery.kirin710.rc
 
 # Sensors
 PRODUCT_PACKAGES += \

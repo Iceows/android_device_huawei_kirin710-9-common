@@ -57,6 +57,7 @@ vendor/lib/libhiai_common.so
 vendor/lib/vendor.huawei.hardware.ai@1.0.so
 vendor/lib/vendor.huawei.hardware.ai@1.1.so
 vendor/lib/vendor.huawei.hardware.ai@1.2.so
+vendor/lib/vendor.huawei.hardware.ai@2.0.so
 vendor/lib/vendor.huawei.hardware.biometrics.hwsecurefacerecognize@1.0.so
 vendor/lib/vendor.huawei.hardware.biometrics.hwfacerecognize@1.0.so
 vendor/lib/vendor.huawei.hardware.biometrics.hwfacerecognize@1.1.so
@@ -239,6 +240,8 @@ vendor/lib64/libhisi_wrapper.so
 vendor/lib64/vendor.huawei.hardware.iawareperfpolicy@1.0.so
 vendor/lib64/hw/vendor.huawei.hardware.iawareperfpolicy@1.0-impl.so
 product/etc/xml/iaware_config_cust.xml:vendor/etc/xml/iaware_config_cust.bin
+product/etc/xml/uniperf_config_cust.xml:vendor/etc/xml/uniperf_config_cust.xml
+
 
 # Connectivity
 vendor/bin/oam_hisi

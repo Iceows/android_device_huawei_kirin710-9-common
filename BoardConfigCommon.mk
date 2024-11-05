@@ -113,7 +113,7 @@ TARGET_VENDOR_PROP += $(COMMON_PATH)/properties/vendor.prop
 
 # Recovery
 BOARD_USES_FULL_RECOVERY_IMAGE := true
-TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/rootdir/etc/fstab.recovery
+TARGET_RECOVERY_FSTAB := $(COMMON_PATH)/configs/fstab/fstab.recovery
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
 
 # Releasetools
@@ -140,8 +140,9 @@ include device/hisi/sepolicy/SEPolicy.mk
 # SPL
 VENDOR_SECURITY_PATCH := 2019-05-05 # ANE-LGRP2-OVS 9.1.0.401
 
-# Vintf
-DEVICE_MANIFEST_FILE := $(COMMON_PATH)/hidl/manifest.xml
+# HIDL
+DEVICE_MATRIX_FILE += $(COMMON_PATH)/hidl/compatibility_matrix.xml
+DEVICE_MANIFEST_FILE += $(COMMON_PATH)/hidl/manifest.xml
 
 # VNDK
 PRODUCT_USE_VNDK_OVERRIDE := true
