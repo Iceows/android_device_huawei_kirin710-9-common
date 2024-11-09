@@ -364,17 +364,15 @@ on post-fs-data
     mkdir /data/vendor/log/sec_storage_data 0775 system system
     mkdir /data/vendor/log/sec_storage_data/log 0755 system system
 
+    # set sec_storage_data can be access by teecd
     mkdir /data/vendor/sec_storage_data 0700 system system
     restorecon_recursive /data/vendor/sec_storage_data
 
     mkdir /data/vendor/sec_storage_data_users 0700 system system
     restorecon_recursive /data/vendor/sec_storage_data_users
 
-    # set sec_storage_data can be access by teecd
     mkdir /data/sec_storage_data 0700 system system encryption=None
     restorecon_recursive /data/sec_storage_data
-    mkdir /data/sec_storage_data_users 0700 system system encryption=None
-    restorecon_recursive /data/sec_storage_data_users
 
 
 on boot
@@ -1069,12 +1067,12 @@ service teecd /vendor/bin/teecd
     disabled
     seclabel u:r:tee:s0
 
-service teelogcat /vendor/bin/tlogcat -f
-    class late_start
-    user root
-    group system
-    disabled
-    seclabel u:r:tlogcat:s0
+# un-comment to debug tee
+# service teelogcat /vendor/bin/tlogcat -f
+#    class late_start
+#    user root
+#   group system
+#    seclabel u:r:teelogcat:s0
 
 service hivwserver /vendor/bin/hivwserver
     class vowifi

@@ -23,7 +23,7 @@ service teelogcat /vendor/bin/tlogcat > /splash2/tlogcat.txt
     class late_start
     user root
     group system
-    seclabel u:r:tlogcat:s0
+    seclabel u:r:teelogcat:s0
 	
 service debug-properties /system/bin/sh -c "getprop > /splash2/debug.properties.txt"
     class main
