@@ -1018,6 +1018,36 @@ on property:odm.thp.service_enable=0
 on property:sys.boot_completed=1
     write /sys/kernel/rcc/event BOOT_COMPLETE
 
+on property:init.svc.zygote=running
+    start vendor.folio_daemon
+
+on property:init.svc.zygote=stopped
+    stop vendor.folio_daemon
+
+on property:ro.vendor.config.hw_vowifi=true
+    class_start vowifi
+
+on property:sys.conn_macs.ready=1
+    # Bluetooth
+    chown bluetooth bluetooth /data/vendor/bluedroid/macbt
+    chmod 0666 /data/vendor/bluedroid/macbt
+
+    # Wi-Fi
+    chown wifi wifi /data/vendor/wifi/macwlan
+    chmod 0666 /data/vendor/wifi/macwlan
+ 
+
+#**********************************************************************************
+#
+# Section for service definition
+#
+#**********************************************************************************
+
+service vendor.folio_daemon /system/bin/folio_daemon
+    class late_start
+    user system
+    group system uhid
+    disabled
 
 # Camera Daemon
 service CameraDaemon /vendor/bin/CameraDaemon kirin710 ${ro.vendor.camera.platform_name}
@@ -1079,14 +1109,4 @@ service hivwserver /vendor/bin/hivwserver
     user system
     group audio inet net_bt net_bt_admin net_bw_acct system
 
-on property:ro.vendor.config.hw_vowifi=true
-    class_start vowifi
 
-on property:sys.conn_macs.ready=1
-    # Bluetooth
-    chown bluetooth bluetooth /data/vendor/bluedroid/macbt
-    chmod 0666 /data/vendor/bluedroid/macbt
-
-    # Wi-Fi
-    chown wifi wifi /data/vendor/wifi/macwlan
-    chmod 0666 /data/vendor/wifi/macwlan
