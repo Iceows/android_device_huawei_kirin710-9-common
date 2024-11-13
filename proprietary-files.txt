@@ -20,13 +20,16 @@ vendor/lib64/vendor.huawei.hardware.rtt@1.0.so
 # SoundTrigger (load by audio.primary.kirin710.so)
 vendor/lib64/hw/sound_trigger.primary.default.so
 
-# Audio Effects
+# Audio Effects (Huawei effect)
+vendor/lib/libhuaweiaudioeffectutil.so
 vendor/lib/soundfx/libhuaweiprocessing.so
 vendor/lib/soundfx/liboffloadvisualizer.so
-vendor/lib/libhuaweiaudioeffectutil.so
+# vendor/lib/soundfx/libswdap.so
+vendor/lib64/libhuaweiaudioeffectutil.so
 vendor/lib64/soundfx/libhuaweiprocessing.so
 vendor/lib64/soundfx/liboffloadvisualizer.so
-vendor/lib64/libhuaweiaudioeffectutil.so
+# vendor/lib64/soundfx/libswdap.so
+
 
 # Bluetooth
 vendor/etc/bluetooth/bt_vendor.conf
