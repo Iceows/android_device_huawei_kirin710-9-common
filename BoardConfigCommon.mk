@@ -21,6 +21,11 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 
+# Generic AOSP image does NOT support HWC1
+TARGET_USES_HWC2 := true
+
+# Set emulator framebuffer display device buffer count to 3
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
 
 # Bluetooth
