@@ -112,9 +112,9 @@ BOARD_ODMIMAGE_PARTITION_RESERVED_SIZE := 94371840
 TARGET_SOC := kirin710
 TARGET_BOARD_PLATFORM := kirin710
 
-
-# Properties
+# Props
 TARGET_VENDOR_PROP += $(COMMON_PATH)/properties/vendor.prop
+TARGET_SYSTEM_PROP += $(COMMON_PATH)/properties/system.prop
 
 # Recovery
 BOARD_USES_FULL_RECOVERY_IMAGE := true

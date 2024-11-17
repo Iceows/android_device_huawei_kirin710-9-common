@@ -16,31 +16,25 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
   
-    <!-- Whether to allow Settings or SUW to create insecure Enterprise networks where server
-         certificate is not validated, by not specifying a Root CA certificate and/or server domain
-         name. It is STRONGLY RECOMMENDED to be set to false -->
-    <bool translatable="false" name="config_wifiAllowInsecureEnterpriseConfigurationsForSettingsAndSUW">true</bool>
+    <!-- Boolean indicating whether the wifi chipset has background scan support -->
+    <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
 
-    <!-- Enable WPA2 to WPA3 auto-upgrade -->
-    <bool translatable="false" name="config_wifiSaeUpgradeEnabled">false</bool>
-    
-    <!-- Always assume 5GHz support -->
+    <!-- Boolean indicating whether the wifi chipset has 5GHz frequency band support -->
     <bool translatable="false" name="config_wifi5ghzSupport">true</bool>
     
-    <!-- Boolean indicating whether the wifi chipset supports background scanning mechanism.
-         This mechanism allows the host to remain in suspend state and the dongle to actively
-         scan and wake the host when a configured SSID is detected by the dongle. This chipset
-         capability can provide power savings when wifi needs to be always kept on. -->
-    <bool name="config_wifi_background_scan_support">false</bool>
-    
-    <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
-    <bool translatable="false" name="config_wifi_dual_band_support">true</bool>
-
-    <bool name="config_wifiDisplaySupportsProtectedBuffers">false</bool>
-    <bool name="config_wifi_batched_scan_supported">false</bool>
- 
-    <bool name="config_wifi_enable_disconnection_debounce">true</bool>
+    <bool name="config_wifi_dual_band_support">true</bool>
     <bool name="config_wifi_enable_wifi_firmware_debugging">false</bool>
-    <bool name="config_wifi_fast_bss_transition_enabled">false</bool>
+    <bool name="config_wifi_batched_scan_supported">false</bool>
+    <bool name="config_wifi_convert_apband_5ghz_to_any">false</bool>
+
+    <bool name="config_bluetooth_le_peripheral_mode_supported">true</bool>
     
+    <bool name="config_bluetooth_address_validation">false</bool>
+    <bool name="config_bluetooth_default_profiles">true</bool>
+    <bool name="config_bluetooth_hfp_inband_ringing_support">true</bool>
+    <bool name="config_bluetooth_pan_enable_autoconnect">false</bool>
+    <bool name="config_bluetooth_reload_supported_profiles_when_enabled">false</bool>
+    <bool name="config_bluetooth_sco_off_call">true</bool>
+    <bool name="config_bluetooth_wide_band_speech">true</bool>
+         
 </resources>
