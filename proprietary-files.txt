@@ -634,7 +634,5 @@ vendor/lib64/libthpinterface.so
 vendor/lib64/libtsa.so
 vendor/lib64/libmmpa.so
 
-# Mapcon
-system/app/Mapcon/Mapcon.apk
 
 
