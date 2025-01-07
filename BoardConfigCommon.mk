@@ -60,13 +60,13 @@ TARGET_RECOVERY_DEVICE_MODULES := init_hisi
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 
-TARGET_KERNEL_CONFIG := hisi3660_defconfig
-TARGET_KERNEL_SOURCE := kernel/huawei/hi3660
+TARGET_KERNEL_CONFIG := kirin710_defconfig
+TARGET_KERNEL_SOURCE := kernel/huawei/kirin710
 
-#TARGET_KERNEL_CLANG_VERSION := r416183b
-#TARGET_KERNEL_CLANG_PATH := $(abspath .)/prebuilts/clang/kernel/$(HOST_PREBUILT_TAG)/clang-$(TARGET_KERNEL_CLANG_VERSION)
-#TARGET_KERNEL_LLVM_BINUTILS := false
-#TARGET_KERNEL_ADDITIONAL_FLAGS := HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument -Wall -Wmissing-prototypes -Wstrict-prototypes -O2 -fomit-frame-pointer -std=gnu11"
+TARGET_KERNEL_CLANG_VERSION := r416183b
+TARGET_KERNEL_CLANG_PATH := $(abspath .)/prebuilts/clang/kernel/$(HOST_PREBUILT_TAG)/clang-$(TARGET_KERNEL_CLANG_VERSION)
+TARGET_KERNEL_LLVM_BINUTILS := false
+TARGET_KERNEL_ADDITIONAL_FLAGS := HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument -Wall -Wmissing-prototypes -Wstrict-prototypes -O2 -fomit-frame-pointer -std=gnu11"
 
 #-Wall -Wmissing-prototypes -Wstrict-prototypes -O2 -fomit-frame-pointer -std=gnu11
 
@@ -84,10 +84,6 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --tags_offset 0x07A00000 --kernel_offset 0x00080000 --ramdisk_offset 0x07c00000 --header_version 1 --os_version 9 --os_patch_level 2019-05-05
 BOARD_KERNEL_IMAGE_NAME := Image.gz
 
-TARGET_FORCE_PREBUILT_KERNEL := true
-ifeq ($(TARGET_FORCE_PREBUILT_KERNEL),true)
-TARGET_PREBUILT_KERNEL := $(COMMON_PATH)/kernel/Image.gz
-endif
 
 # Metadata
 BOARD_USES_METADATA_PARTITION := true
