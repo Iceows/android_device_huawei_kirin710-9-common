@@ -288,9 +288,9 @@ PRODUCT_COPY_FILES += \
 # Init
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/init/init.kirin710.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.kirin710.rc \
-    $(LOCAL_PATH)/configs/init/init.kirin710.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.kirin710.usb.rc \
-    $(LOCAL_PATH)/configs/init/init.performance.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.performance.rc \
-    $(LOCAL_PATH)/configs/init/init.override.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.override.rc \
+    $(LOCAL_PATH)/configs/init/init.kirin710.usb.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.kirin710.usb.rc \
+    $(LOCAL_PATH)/configs/init/init.performance.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.performance.rc \
+    $(LOCAL_PATH)/configs/init/init.override.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.override.rc \
     $(LOCAL_PATH)/configs/init/rild.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/rild.rc \
     $(LOCAL_PATH)/configs/init/ueventd.kirin710.rc:$(TARGET_COPY_OUT_VENDOR)/etc/ueventd.rc
 
