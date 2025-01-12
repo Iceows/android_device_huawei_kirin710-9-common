@@ -5,8 +5,8 @@
 
 /dev/block/bootdevice/by-name/splash2   /splash2   ext4     rw,nosuid,nodev,noatime,data=ordered,context=u:object_r:splashtwo_file:s0 wait,check,nofail
 /dev/block/bootdevice/by-name/userdata  /data      f2fs     nosuid,nodev,noatime,discard,inline_data,inline_xattr wait,check
-/dev/block/bootdevice/by-name/cache     /cache     ext4     rw,nosuid,nodev,noatime,data=ordered wait,check
-/dev/block/bootdevice/by-name/version   /metadata  ext4     noatime,nosuid,nodev wait,check,formattable,first_stage_mount
+/dev/block/bootdevice/by-name/cache     /cache     ext4     rw,nosuid,nodev,noatime,data=ordered                  wait,check
+/dev/block/bootdevice/by-name/version   /version   erofs    ro,nosuid,nodev,noatime                               wait,check
 /dev/block/bootdevice/by-name/misc      /misc      emmc     defaults     defaults
 /dev/block/bootdevice/by-name/oeminfo   /oeminfo   emmc     defaults     first_stage_mount
 /dev/block/bootdevice/by-name/secure_storage /sec_storage ext4 rw,nosuid,nodev,noatime,auto_da_alloc,mblk_io_submit,data=journal,context=u:object_r:teecd_data_file:s0 wait,nofail

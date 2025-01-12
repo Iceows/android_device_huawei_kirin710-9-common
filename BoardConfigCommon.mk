@@ -86,7 +86,7 @@ BOARD_KERNEL_IMAGE_NAME := Image.gz
 
 
 # Metadata
-BOARD_USES_METADATA_PARTITION := true
+BOARD_USES_METADATA_PARTITION := false
 
 # Partitions
 TARGET_COPY_OUT_ODM := odm
@@ -132,7 +132,7 @@ BOARD_ROOT_EXTRA_FOLDERS += \
     3rdmodemnvmbkp \
     modem_log \
     sec_storage \
-    metadata \
+    version \
     splash2
 
 # SELinux
