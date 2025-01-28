@@ -100,6 +100,9 @@ function blob_fixup() {
         vendor/lib*/libhiai_common.so)
 	    "${PATCHELF}" --replace-needed "libprotobuf-cpp-lite.so" "libprotobuf-cpp-lite-v29.so" "${2}"
 	    ;;
+	vendor/bin/hostapd_hisi)
+            "${PATCHELF}" --add-needed "libshim_binder.so" "${2}"
+            ;;
         # Replace fmservice name by OSS fmservice name
         lib*/libfm_jni.so)
             sed -i 's|com/huawei/android/hardware/fmradio/FmReceiverJNI|com/android/server/FmReceiverJNI\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00|g' "${2}"
