@@ -470,7 +470,14 @@ vendor/etc/factory_modem.cfg
 vendor/bin/oeminfo_nvm_server
 
 # OMX
+vendor/lib/libOMX.hisi.media.common.so
+vendor/lib/libOMX.hisi.video.decoder.secure.so
+vendor/lib/libOMX.hisi.video.decoder.so
+vendor/lib/libOMX_Core.so
+vendor/lib/libOMX.hisi.vdec.core.so
+vendor/lib/libOMX.hisi.video.encoder.so
 vendor/lib/libstagefrighthw.so
+system/lib/libstagefright.huawei.so
 vendor/lib64/libOMX.hisi.media.common.so
 vendor/lib64/libOMX.hisi.video.decoder.secure.so
 vendor/lib64/libOMX.hisi.video.decoder.so
@@ -478,6 +485,7 @@ vendor/lib64/libOMX_Core.so
 vendor/lib64/libOMX.hisi.vdec.core.so
 vendor/lib64/libOMX.hisi.video.encoder.so
 vendor/lib64/libstagefrighthw.so
+system/lib64/libstagefright.huawei.so
 
 # RIL
 vendor/bin/hw/rild

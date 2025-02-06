@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright (C) 2012 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -186,10 +186,10 @@ Only the three quirks included above are recognized at this point:
 
     <Encoders>
         <!--config suggestion for avc -->
-        <!--VT:1280x720@1.5Mbps@30fps，640x360@650kpbps@30fps,640x360@350kbps@30fps-->
+        <!--VT:1280x720@1.5Mbps@30fps,640x360@650kpbps@30fps,640x360@350kbps@30fps-->
         <!--DestkTop Share: 1280x720@800kbps@3-7fps, 720x450@280kbps@3-7fps-->
         <!--Wifi Display:1920x1080@8Mbps@30fps-->
-        <!--Recoding:1920x1080@18Mbps@30fps, 1920x1080@30M@60fps，1280X720@30M@120fps-->
+        <!--Recoding:1920x1080@18Mbps@30fps, 1920x1080@30M@60fps,1280X720@30M@120fps-->
         <MediaCodec name="OMX.hisi.video.encoder.avc" type="video/avc" >
             <Limit name="size" min="176x144" max="1920x1088" />
             <Limit name="alignment" value="4x4" />
@@ -202,10 +202,10 @@ Only the three quirks included above are recognized at this point:
         </MediaCodec>
 
         <!--config suggestion for hevc -->
-        <!--VT:1280x720@1Mbps@30fps，640x360@450kpbps@30fps,640x360@250kbps@30fps，640x360@170kbps@15fps-->
+        <!--VT:1280x720@1Mbps@30fps,640x360@450kpbps@30fps,640x360@250kbps@30fps,640x360@170kbps@15fps-->
         <!--DestkTop Share: 1280x720@500kbps@3-7fps,720x450@200kbps@3-7fps-->
         <!--Wifi Display:1920x1080@8Mbps@30fps-->
-        <!--Recoding:1920x1080@12Mbps@30fps，1920x1080@30M@60fps，1280X720@30M@120fps-->
+        <!--Recoding:1920x1080@12Mbps@30fps,1920x1080@30M@60fps,1280X720@30M@120fps-->
         <MediaCodec name="OMX.hisi.video.encoder.hevc" type="video/hevc" >
             <Limit name="size" min="176x144" max="1920x1088" />
             <Limit name="alignment" value="4x4" />
@@ -216,9 +216,9 @@ Only the three quirks included above are recognized at this point:
             <Quirk name="requires-allocate-on-output-ports" />
             <Limit name="concurrent-instances" max="3" />
         </MediaCodec>
-
     </Encoders>
 
     <Include href="media_codecs_google_video.xml" />
     <Include href="media_codecs_google_telephony.xml" />
 </MediaCodecs>
+
