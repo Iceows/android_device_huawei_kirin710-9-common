@@ -1,8 +1,8 @@
-From 831311b16138596d568b9f4675028a61e65a53fa Mon Sep 17 00:00:00 2001
+From 4feb150b24d3e37b896eeb698d8a78fe165bc64e Mon Sep 17 00:00:00 2001
 From: Iceows <mounierr07@gmail.com>
 Date: Tue, 4 Feb 2025 20:01:43 +0100
-Subject: [PATCH] av: remove profile levels verification to allow all profile
- and level
+Subject: [PATCH 1/2] av: remove profile levels verification to allow all
+ profile and level
 
 Change-Id: I8f6e2c1ab802ddf069ce3258dde6c1a345d82d9a
 ---
@@ -25,5 +25,5 @@ index a3040f4f7d..1102b7c85e 100644
                  return false;
              }
 -- 
-2.34.1
+2.25.1
 
