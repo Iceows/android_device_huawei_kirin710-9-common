@@ -124,9 +124,7 @@ on init
 
     # TEE
     chmod 0400 /dev/hisi_teelog
-    mount ext4 /dev/block/bootdevice/by-name/secure_storage /sec_storage nosuid nodev noatime wait crypt discard,auto_da_alloc,mblk_io_submit,data=journal,context=u:object_r:teecd_data_file:s0
-    chown root root /sec_storage
-    chmod 600 /sec_storage
+
 
     # Audio
     chmod 0660 /dev/maxim_smartpa_dev
@@ -198,10 +196,7 @@ on fs
     mkdir /mnt/modem/modem_secure 0755 root system
     mkdir /mnt/modem/mnvm2:0 0755 root system
 
-    # sec_storage for TEE
-    chown root root /sec_storage
-    chmod 600 /sec_storage
-    
+
     # splash2
     restorecon /splash2
     chmod 775 /splash2
@@ -221,6 +216,10 @@ on fs
     # Enable ZRAM
     swapon_all /vendor/etc/fstab.${ro.hardware}
 
+    # Change owner of TEE sec_storage
+    chown root root /sec_storage
+    chmod 600 /sec_storage
+    
     # Start TEECD
     start teecd
 
