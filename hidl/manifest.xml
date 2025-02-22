@@ -59,6 +59,16 @@
     <hal format="hidl">
         <name>android.hardware.drm</name>
         <transport>hwbinder</transport>
+        <interface>
+            <name>ICryptoFactory</name>
+            <instance>widevine</instance>
+        </interface>
+        <interface>
+            <name>IDrmFactory</name>
+            <instance>widevine</instance>
+        </interface>
+        <fqname>@1.0::ICryptoFactory/widevine</fqname>
+        <fqname>@1.0::IDrmFactory/widevine</fqname>
         <fqname>@1.1::ICryptoFactory/widevine</fqname>
         <fqname>@1.1::IDrmFactory/widevine</fqname>
     </hal>
