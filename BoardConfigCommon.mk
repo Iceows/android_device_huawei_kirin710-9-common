@@ -41,7 +41,7 @@ BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_SYSTEMIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_ODMIMAGE_FILE_SYSTEM_TYPE := erofs
-#BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
 
 # Huawei use legacy compression and lz4 algo
 BOARD_EROFS_USE_LEGACY_COMPRESSION := true
@@ -71,17 +71,31 @@ TARGET_KERNEL_ADDITIONAL_FLAGS := HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-l
 #-Wall -Wmissing-prototypes -Wstrict-prototypes -O2 -fomit-frame-pointer -std=gnu11
 
 # BootIMG
-BOARD_BOOTIMG_HEADER_VERSION := 2
+BOARD_BOOTIMG_HEADER_VERSION := 1
 BOARD_CUSTOM_BOOTIMG := true
 BOARD_CUSTOM_BOOTIMG_HAS_RAMDISK := false
 BOARD_CUSTOM_BOOTIMG_MK := $(COMMON_PATH)/tools/mkbootimg.mk
 
 # Kernel prebuild by GCC
-BOARD_KERNEL_BASE := 0x00478000
-BOARD_KERNEL_CMDLINE := loglevel=4 coherent_pool=512K page_tracker=on slub_min_objects=12 unmovable_isolate1=2:192M,3:224M,4:256M printktimer=0xfff0a000,0x534,0x538 androidboot.selinux=permissive
-BOARD_KERNEL_CMDLINE += androidboot.init_fatal_reboot_target=recovery
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_MKBOOTIMG_ARGS := --tags_offset 0x07A00000 --kernel_offset 0x00080000 --ramdisk_offset 0x07c00000 --header_version 1 --os_version 9 --os_patch_level 2019-05-05
+BOARD_KERNEL_BASE := 0x00078000
+BOARD_KERNEL_OFFSET := 0x00008000
+BOARD_KERNEL_TAGS_OFFSET := 0x07988000
+BOARD_RAMDISK_OFFSET := 0x07b88000
+BOARD_SECOND_OFFSET := 0x00e88000
+
+BOARD_KERNEL_CMDLINE := loglevel=4 initcall_debug=n page_tracker=on unmovable_isolate1=2:192M,3:224M,4:256M printktimer=0xfff0a000,0x534,0x538
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE += androidboot.init_fatal_reboot_target=recovery
+BOARD_MKBOOTIMG_ARGS := --kernel_offset $(BOARD_KERNEL_OFFSET) --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --second_offset $(BOARD_SECOND_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET) --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
+
+TARGET_KERNEL_CLANG_VERSION := r416183b
+TARGET_KERNEL_CLANG_PATH := $(abspath .)/prebuilts/clang/kernel/$(HOST_PREBUILT_TAG)/clang-$(TARGET_KERNEL_CLANG_VERSION)
+TARGET_KERNEL_ADDITIONAL_FLAGS := HOSTCFLAGS="-fuse-ld=lld -Wno-unused-command-line-argument"
+TARGET_KERNEL_LLVM_BINUTILS := false
+
+TARGET_KERNEL_SOURCE := kernel/huawei/kirin710
+TARGET_KERNEL_CONFIG := kirin710_defconfig
 BOARD_KERNEL_IMAGE_NAME := Image.gz
 
 
@@ -92,7 +106,8 @@ BOARD_USES_METADATA_PARTITION := false
 TARGET_COPY_OUT_ODM := odm
 TARGET_COPY_OUT_VENDOR := vendor
 TARGET_COPY_OUT_SYSTEM := system
-#TARGET_COPY_OUT_PRODUCT := product
+TARGET_COPY_OUT_PRODUCT := product
+
 
 ifneq ($(WITH_GMS),true)
 #BOARD_PRODUCTIMAGE_EXTFS_INODE_COUNT := -1
