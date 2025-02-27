@@ -1,10 +1,10 @@
-/dev/block/bootdevice/by-name/system       /system       erofs     ro,barrier=1    wait,first_stage_mount
-/dev/block/bootdevice/by-name/product      /product      erofs     ro,barrier=1    wait,first_stage_mount
-/dev/block/bootdevice/by-name/vendor       /vendor       erofs    ro,barrier=1    wait,first_stage_mount
+/dev/block/bootdevice/by-name/system       /system       ext4     rw,barrier=1    wait,first_stage_mount
+/dev/block/bootdevice/by-name/product      /product      ext4     rw,barrier=1    wait,first_stage_mount
+/dev/block/bootdevice/by-name/vendor       /vendor       ext4     rw,barrier=1    wait,first_stage_mount
 /dev/block/bootdevice/by-name/odm          /odm          erofs    ro,barrier=1    wait,first_stage_mount
 
 /dev/block/bootdevice/by-name/splash2   /splash2   ext4     rw,nosuid,nodev,noatime,data=ordered,context=u:object_r:splashtwo_file:s0 wait,check,nofail
-/dev/block/bootdevice/by-name/userdata  /data      f2fs     nosuid,nodev,noatime,discard,inline_data,inline_xattr wait,check
+/dev/block/bootdevice/by-name/userdata  /data	     f2fs     nosuid,nodev,noatime,discard,inline_data,inline_xattr	wait,check,fileencryption=aes-256-xts:aes-256-cts
 /dev/block/bootdevice/by-name/cache     /cache     ext4     rw,nosuid,nodev,noatime,data=ordered                  wait,check
 /dev/block/bootdevice/by-name/version   /version   erofs    ro,nosuid,nodev,noatime                               wait,check
 /dev/block/bootdevice/by-name/misc      /misc      emmc     defaults     defaults
