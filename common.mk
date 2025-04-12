@@ -125,6 +125,9 @@ PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.basic \
     com.android.future.usb.accessory
 
+# USB
+TARGET_USES_USB_GADGET_HAL := true
+
 # GPS
 PRODUCT_PACKAGES += \
     android.hardware.gnss@1.0.vendor \
