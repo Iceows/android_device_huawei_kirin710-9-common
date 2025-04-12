@@ -361,6 +361,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libshim_omx
 
+# AuthSecret HAL
+PRODUCT_PACKAGES += \
+    android.hardware.authsecret@1.0-service
+
 # Wifi
 PRODUCT_PACKAGES += \
     libshim_binder \
